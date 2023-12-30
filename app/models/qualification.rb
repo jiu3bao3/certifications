@@ -23,4 +23,6 @@ class Qualification < ApplicationRecord
   enum :classification, %i[national official vendor]
   belongs_to :category
   has_many :grades, dependent: :destroy
+
+  validates :name_ja, presence: { message: '資格名は必須です。' }
 end

@@ -1,0 +1,48 @@
+body 
+{
+  background-color:aliceblue
+}
+table tr td, th
+{
+  border: 1px solid black;
+}
+h1
+{
+  text-align: center;
+}
+.contents {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.even 
+{
+  background-color: #FFF0F0;
+}
+.odd
+{
+  background-color: #FFFFF0;
+}
+.text_field
+{
+  width: 25em;
+}
+.text_area
+{
+  width: 25em;
+  height: 10em;
+}
+.submit_button
+{
+  width: 8em;
+  height: 2.5em;
+  font-weight: bold;
+}
+.messages
+{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  color: red;
+  font-weight: bold;
+}

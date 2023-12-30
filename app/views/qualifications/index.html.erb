@@ -1,49 +1,27 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <title><%= Qualification.model_name.human %></title>
-  <style>
-    table tr td, th{
-      border: 1px solid black;
-    }
-    h1 {
-      text-align: center;
-    }
-    .contents {
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .even {
-      background-color: #FFF0F0;
-    }
-    .odd {
-      background-color: #FFFFF0;
-    }
-  </style>
-</head>
-<body>
-  <div class="contents">
-    <h1><%= Qualification.model_name.human %></h1>
-    <table>
+<div class="contents">
+  <h1><%= Qualification.model_name.human %></h1>
+  <%= button_to '新規登録', new_qualification_path, method: :get, class: 'submit_button' %>
+  <table>
+    <thead>
       <tr>
         <th><%= Qualification.human_attribute_name(:category) %></th>
         <th><%= Qualification.human_attribute_name(:classification) %></th>
         <th><%= Qualification.human_attribute_name(:name_ja) %></th>
-        <th><%= Grade.human_attribute_name(:grade_name) %></th>
-        <th><%= Certificater.model_name.human %></th>
+        <th>編集</th>
         <th>削除</th>
       </tr>
-      <% @qualification_grades.each do |q| %>
+    </thead>
+    <tbody>
+      <% @qualifications.each do |q| %>
         <tr class="<%= cycle('even', 'odd') %>">
-          <td><%= q.qualification.category.name_ja %></td>
-          <td><%= Qualification.human_attribute_name("classification.#{q.qualification.classification}") %></td>
-          <td><%= q.qualification.name_ja %></td>
-          <td><%= q.grade_name %></td>
-          <td><%= q.certificater.name_ja %></td>
-          <td><%= button_to '削除', qualification_path(q), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'} }  %></td>
+          <td><%= q.category.name_ja %></td>
+          <td><%= Qualification.human_attribute_name("classification.#{q.classification}") %></td>
+          <td><%= q.name_ja %></td>
+          <td><%= button_to '編集', edit_qualification_path(q), { method: :get } %></td>
+          <td><%= button_to '削除', qualification_path(q), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'} } %></td>
         </tr>
       <% end %>
-    </table>
-  </div>
-</html>
+    </tbody>
+  </table>
+  <%= button_to '新規登録', new_qualification_path, { method: :get, class: 'submit_button' } %>
+</div>
