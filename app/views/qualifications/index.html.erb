@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title><%= Qualification.model_name.human %></title>
+  <style>
+    table tr td, th{
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+<%= Qualification.model_name.human %>
+<table>
+  <tr>
+    <th><%= Qualification.human_attribute_name(:category) %></th>
+    <th><%= Qualification.human_attribute_name(:classification) %></th>
+    <th><%= Qualification.human_attribute_name(:name_ja) %></th>
+    <th><%= Grade.human_attribute_name(:grade_name) %></th>
+    <th><%= Certificater.model_name.human %></th>
+  </tr>
+<% @qualification_grades.each do |q| %>
+  <tr>
+    <td><%= q.qualification.category.name_ja %></td>
+    <td><%= Qualification.human_attribute_name("classification.#{q.qualification.classification}") %></td>
+    <td><%= q.qualification.name_ja %></td>
+    <td><%= q.grade_name %></td>
+    <td><%= q.certificater.name_ja %></td>
+  </tr>
+<% end %>
+</table>
+</html>

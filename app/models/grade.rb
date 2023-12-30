@@ -13,9 +13,10 @@
 #
 # Indexes
 #
-#  index_grades_on_certificater_id   (certificater_id)
-#  index_grades_on_examiner_id       (examiner_id)
-#  index_grades_on_qualification_id  (qualification_id)
+#  index_grades_on_certificater_id                  (certificater_id)
+#  index_grades_on_examiner_id                      (examiner_id)
+#  index_grades_on_qualification_id                 (qualification_id)
+#  index_grades_on_qualification_id_and_grade_name  (qualification_id,grade_name) UNIQUE
 #
 # Foreign Keys
 #

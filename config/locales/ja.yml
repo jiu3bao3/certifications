@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      qualification: '資格'
+      grade: 'グレード'
+      category: 'カテゴリー'
+      examiner: '試験実施機関'
+      certificater: '認定機関'
+    attributes:
+      qualification:
+        id: '資格ID'
+        name_ja: '資格名'
+        name_en: '資格英語名'
+        classification: '区分'
+        category: 'カテゴリー'
+        description: '説明'
+      qualification/classification:
+        national: '国家資格'
+        official: '公的資格'
+        vendor: '私的資格'
+      grade:
+        grade_name: 'グレード名'
+        description: '説明'
+

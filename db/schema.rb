@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_30_025043) do
     t.datetime "updated_at", null: false
     t.index ["certificater_id"], name: "index_grades_on_certificater_id"
     t.index ["examiner_id"], name: "index_grades_on_examiner_id"
+    t.index ["qualification_id", "grade_name"], name: "index_grades_on_qualification_id_and_grade_name", unique: true
     t.index ["qualification_id"], name: "index_grades_on_qualification_id"
   end
 

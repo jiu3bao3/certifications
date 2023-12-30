@@ -39,5 +39,7 @@ class CreateQualifications < ActiveRecord::Migration[7.1]
       t.references :examiner, null: true, foreign_key: true, comment: '試験実施者'
       t.timestamps
     end
+
+    add_index :grades, %i[qualification_id grade_name], unique: true
   end
 end
