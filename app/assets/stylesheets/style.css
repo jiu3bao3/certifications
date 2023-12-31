@@ -42,11 +42,18 @@ h1
   height: 2.5em;
   font-weight: bold;
 }
+.alert
+{
+  color: red;
+}
+.notice
+{
+  color: blue;
+}
 .messages
 {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
-  color: red;
   font-weight: bold;
 }

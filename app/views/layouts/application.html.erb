@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>App</title>
+    <title><%= Qualification.model_name.human %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,7 +13,7 @@
   <body>
     <div class="messages">
       <% flash.each do |message_type, message| %>
-        <div><%= message %></div>
+        <div class="<%= message_type %>"><%= message %></div>
       <% end %>
     </div>
     <%= yield %>
