@@ -6,7 +6,7 @@
         <td class="borderless"><%= f.text_field :qualification_name, class: 'text_field' %></td>
       </tr>
       <tr>
-        <th class="borderless"><%= f.label :classification, Qualification.human_attribute_name(:classification) %></th>
+        <th class="borderless"><%= Qualification.human_attribute_name(:classification) %></th>
         <td class="borderless">
           <% Qualification.classifications.keys.each do |c| %>
             <%= f.check_box "classifications[#{c}]", { checked: true } %>
