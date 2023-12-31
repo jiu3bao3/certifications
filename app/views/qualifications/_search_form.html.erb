@@ -1,0 +1,27 @@
+<%= form_with(url: qualifications_url, method: :get, data: { turbo: false }) do |f| %>
+  <table class="borderless">
+    <tbody>
+      <tr>
+        <th class="borderless"><%= f.label :qualification_name, Qualification.human_attribute_name(:name_ja) %></th>
+        <td class="borderless"><%= f.text_field :qualification_name, class: 'text_field' %></td>
+      </tr>
+      <tr>
+        <th class="borderless"><%= f.label :classification, Qualification.human_attribute_name(:classification) %></th>
+        <td class="borderless">
+          <% Qualification.classifications.keys.each do |c| %>
+            <%= f.check_box "classifications[#{c}]", { checked: true } %>
+            <%= Qualification.human_attribute_name("classification.#{c}") %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th class="borderless"><%= Category.model_name.human %></th>
+        <td class="borderless"><%= f.select :category_id, Category.all.map { |c| [c.name_ja, c.id]}, { include_blank: true } %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="width: 80%; text-align: right;">
+    <%= f.submit "検索", class: 'submit_button' %>
+  </div>
+  <hr />
+<% end %>

@@ -1,5 +1,6 @@
 <div class="contents">
   <h1><%= Qualification.model_name.human %></h1>
+  <%= render partial: "search_form" %>
   <%= button_to I18n.t('labels.new'), new_qualification_path, method: :get, class: 'submit_button' %>
   <table>
     <thead>
