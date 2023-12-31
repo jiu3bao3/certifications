@@ -32,7 +32,7 @@ class GradesController < ApplicationController
   def destroy
     @grade = Grade.find(params[:id])
     if @grade.destroy
-      flash[:notice] = '削除しました。'
+      flash[:notice] = I18n.t('messages.destroyed')
       redirect_to qualification_path(params[:qualification_id])
     else
       flash.now[:error] = @grade.errors.first.full_message

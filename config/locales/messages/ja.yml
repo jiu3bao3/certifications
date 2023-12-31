@@ -8,3 +8,8 @@ ja:
     item: '項目'
     value: '内容'
     save: '保存'
+    detail: '詳細'
+  messages:
+    registered: '登録しました。'
+    updated: '更新しました。'
+    destroyed: '削除しました。'

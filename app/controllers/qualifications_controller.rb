@@ -16,7 +16,7 @@ class QualificationsController < ApplicationController
     @qualification = Qualification.new(request_params)
 
     if @qualification.save
-      flash[:notice] = '登録しました。'
+      flash[:notice] = I18n.t('messages.registered')
       redirect_to edit_qualification_path(@qualification)
     else
       flash.now[:notice] = @qualification.errors.first.full_message
@@ -31,7 +31,7 @@ class QualificationsController < ApplicationController
   def update
     @qualification = Qualification.find(params[:id])
     if @qualification.update(request_params)
-      flash[:notice] = '更新しました。'
+      flash[:notice] = I18n.t('messages.updated')
       redirect_to edit_qualification_path(@qualification)
     else
       flash.now[:notice] = @qualification.errors.first.full_message
@@ -42,7 +42,7 @@ class QualificationsController < ApplicationController
   def destroy
     Qualification.destroy(params[:id])
 
-    flash[:notice] = '削除しました。'
+    flash[:notice] = I18n.t('messages.destroyed')
     redirect_to qualifications_path
   end
 

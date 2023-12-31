@@ -24,5 +24,5 @@ class Qualification < ApplicationRecord
   belongs_to :category
   has_many :grades, dependent: :destroy
 
-  validates :name_ja, presence: { message: '資格名は必須です。' }
+  validates :name_ja, presence: true
 end
