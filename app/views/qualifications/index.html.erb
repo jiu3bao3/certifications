@@ -7,6 +7,7 @@
         <th><%= Qualification.human_attribute_name(:category) %></th>
         <th><%= Qualification.human_attribute_name(:classification) %></th>
         <th><%= Qualification.human_attribute_name(:name_ja) %></th>
+        <th>参照</th>
         <th>編集</th>
         <th>削除</th>
       </tr>
@@ -17,6 +18,7 @@
           <td><%= q.category.name_ja %></td>
           <td><%= Qualification.human_attribute_name("classification.#{q.classification}") %></td>
           <td><%= q.name_ja %></td>
+          <td><%= button_to '参照', qualification_path(q), { method: :get } %></td>
           <td><%= button_to '編集', edit_qualification_path(q), { method: :get } %></td>
           <td><%= button_to '削除', qualification_path(q), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'} } %></td>
         </tr>

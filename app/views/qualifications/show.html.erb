@@ -1,0 +1,34 @@
+<div class="contents">
+  <%= link_to '一覧画面', qualifications_path %>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 10em;">項目</th>
+        <th style="width: 20em;">内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <th><%= Qualification.human_attribute_name(:name_ja) %></th>
+          <td><%= @qualification.name_ja %></td>
+      </tr>
+      <tr>
+          <th><%= Qualification.human_attribute_name(:name_en) %></th>
+          <td><%= @qualification.name_en %></td>
+      </tr>
+      <tr>
+          <th><%= Qualification.human_attribute_name(:classification) %></th>
+          <td><%= Qualification.human_attribute_name("classification.#{@qualification.classification}") %></td>
+      </tr>
+      <tr>
+          <th><%= Qualification.human_attribute_name(:category_id) %></th>
+          <td><%= @qualification.category&.name_ja %></td>
+      </tr>
+      <tr>
+          <th><%= Qualification.human_attribute_name(:description) %></th>
+          <td><%= safe_join((@qualification.description || '').split("\n"), tag(:br)) %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to '一覧画面', qualifications_path %>
+</div>

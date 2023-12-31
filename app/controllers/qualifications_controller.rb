@@ -3,6 +3,10 @@ class QualificationsController < ApplicationController
     @qualifications = Qualification.includes(%i[category]).all
   end
 
+  def show
+    @qualification = Qualification.includes(:category).find(params[:id])
+  end
+
   def new
     @qualification = Qualification.new
   end
