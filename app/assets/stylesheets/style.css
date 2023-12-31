@@ -2,6 +2,10 @@ body
 {
   background-color:aliceblue
 }
+table
+{
+  width: 80%;
+}
 table tr td, th
 {
   border: 1px solid black;
@@ -25,11 +29,11 @@ h1
 }
 .text_field
 {
-  width: 25em;
+  width: 90%;
 }
 .text_area
 {
-  width: 25em;
+  width: 90%;
   height: 10em;
 }
 .submit_button

@@ -1,0 +1,10 @@
+ja:
+  labels:
+    index: '一覧'
+    edit: '編集'
+    destroy: '削除'
+    show: '参照'
+    new: '新規登録'
+    item: '項目'
+    value: '内容'
+    save: '保存'

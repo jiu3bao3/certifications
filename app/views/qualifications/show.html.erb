@@ -1,10 +1,10 @@
 <div class="contents">
-  <%= link_to '一覧画面', qualifications_path %>
+  <%= link_to I18n.t('labels.index'), qualifications_path %>
   <table>
     <thead>
       <tr>
-        <th style="width: 10em;">項目</th>
-        <th style="width: 20em;">内容</th>
+        <th style="width: 10em;"><%= I18n.t('labels.item') %></th>
+        <th><%= I18n.t('labels.value') %></th>
       </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@
           <td><%= Qualification.human_attribute_name("classification.#{@qualification.classification}") %></td>
       </tr>
       <tr>
-          <th><%= Qualification.human_attribute_name(:category_id) %></th>
+          <th><%= Category.model_name.human %></th>
           <td><%= @qualification.category&.name_ja %></td>
       </tr>
       <tr>
@@ -30,5 +30,16 @@
       </tr>
     </tbody>
   </table>
-  <%= link_to '一覧画面', qualifications_path %>
+  <div style="margin-top: 1em;">
+    <div style="float:left; width: 50%;">
+      <%= link_to I18n.t('labels.index'), qualifications_path %>
+    </div>
+    <div style="float:left;">
+      <%= button_to I18n.t('labels.edit'), edit_qualification_path(@qualification), { method: :get, class: 'submit_button' } %>
+    </div>
+    <div style="float:left; margin-left: 1em;">
+      <%= button_to I18n.t('labels.destroy'), qualification_path(@qualification), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'}, class: 'submit_button' } %>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
 </div>

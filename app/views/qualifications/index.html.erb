@@ -1,15 +1,15 @@
 <div class="contents">
   <h1><%= Qualification.model_name.human %></h1>
-  <%= button_to '新規登録', new_qualification_path, method: :get, class: 'submit_button' %>
+  <%= button_to I18n.t('labels.new'), new_qualification_path, method: :get, class: 'submit_button' %>
   <table>
     <thead>
       <tr>
         <th><%= Qualification.human_attribute_name(:category) %></th>
         <th><%= Qualification.human_attribute_name(:classification) %></th>
         <th><%= Qualification.human_attribute_name(:name_ja) %></th>
-        <th>参照</th>
-        <th>編集</th>
-        <th>削除</th>
+        <th><%= I18n.t('labels.show') %></th>
+        <th><%= I18n.t('labels.edit') %></th>
+        <th><%= I18n.t('labels.destroy') %></th>
       </tr>
     </thead>
     <tbody>
@@ -18,12 +18,12 @@
           <td><%= q.category.name_ja %></td>
           <td><%= Qualification.human_attribute_name("classification.#{q.classification}") %></td>
           <td><%= q.name_ja %></td>
-          <td><%= button_to '参照', qualification_path(q), { method: :get } %></td>
-          <td><%= button_to '編集', edit_qualification_path(q), { method: :get } %></td>
-          <td><%= button_to '削除', qualification_path(q), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'} } %></td>
+          <td><%= button_to I18n.t('labels.show'), qualification_path(q), { method: :get } %></td>
+          <td><%= button_to I18n.t('labels.edit'), edit_qualification_path(q), { method: :get } %></td>
+          <td><%= button_to I18n.t('labels.destroy'), qualification_path(q), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'} } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <%= button_to '新規登録', new_qualification_path, { method: :get, class: 'submit_button' } %>
+  <%= button_to I18n.t('labels.new'), new_qualification_path, { method: :get, class: 'submit_button' } %>
 </div>
