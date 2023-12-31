@@ -2,24 +2,24 @@
   <table>
     <tbody>
       <tr>
-          <th><%= f.label :grade_name %></th>
-          <td><%= f.text_field :grade_name %></td>
+        <th><%= f.label :grade_name %></th>
+        <td><%= f.text_field :grade_name %></td>
       </tr>
       <tr>
-          <th><%= f.label :display_order %></th>
-          <td><%= f.text_field :display_order %></td>
+        <th><%= f.label :display_order %></th>
+        <td><%= f.number_field :display_order, style: "text-align: right;" %></td>
       </tr>
       <tr>
-          <th><%= f.label :certificater_id, Certificater.model_name.human %></th>
-          <td><%= f.select :certificater_id, Certificater.all.map { |c| [c.name_ja, c.id]}, selected: @grade.certificater_id, include_blank: true %></td>
+        <th><%= f.label :certificater_id, Certificater.model_name.human %></th>
+        <td><%= f.select :certificater_id, Certificater.all.map { |c| [c.name_ja, c.id]}, selected: @grade.certificater_id, include_blank: true %></td>
       </tr>
       <tr>
-          <th><%= f.label :examiner_id, Examiner.model_name.human %></th>
-          <td><%= f.select :examiner_id, Examiner.all.map { |e| [e.name, e.id]}, selected: @grade.examiner_id, include_blank: true %></td>
+        <th><%= f.label :examiner_id, Examiner.model_name.human %></th>
+        <td><%= f.select :examiner_id, Examiner.all.map { |e| [e.name, e.id]}, selected: @grade.examiner_id, include_blank: true %></td>
       </tr>
       <tr>
-          <th><%= f.label :description %></th>
-          <td><%= f.text_area :description, class: 'text_area'%></td>
+        <th><%= f.label :description %></th>
+        <td><%= f.text_area :description, class: 'text_area'%></td>
       </tr>
     </tbody>
   </table>

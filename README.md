@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+資格情報を管理するRuby on Railsサンプルアプリケーション
 
-Things you may want to cover:
+Docker上で起動し，ブラウザで [http://localhost:3000/](http://localhost:3000/) にアクセスする
 
-* Ruby version
+## 環境
+* Ruby: 3.3
+* Rails: 7.1.2
+* MySQL: 8.0
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 更新履歴
+* 2023.12.30 新規作成

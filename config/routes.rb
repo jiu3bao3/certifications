@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :qualifications do
     resources :grades, except: %i[index]
   end
+  root to: "qualifications#index"
 end
