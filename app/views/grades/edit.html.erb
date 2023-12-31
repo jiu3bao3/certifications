@@ -1,0 +1,6 @@
+<div class="contents">
+  <h1><%= @grade.qualification&.name_ja %></h1>
+  <%= link_to '資格詳細画面', qualification_path(@grade.qualification) %>
+  <%= render partial: "form", locals: { grade: @grade, url: qualification_grade_url } %>
+  <%= link_to '資格詳細画面', qualification_path(@grade.qualification) %>
+</div>

@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :qualifications do
-    resources :grades
+    resources :grades, except: %i[index]
   end
 end

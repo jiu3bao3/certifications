@@ -20,5 +20,6 @@ ja:
         vendor: '私的資格'
       grade:
         grade_name: 'グレード名'
+        display_order: '表示順'
         description: '説明'
 

@@ -28,4 +28,6 @@ class Grade < ApplicationRecord
   belongs_to :qualification
   belongs_to :examiner
   belongs_to :certificater
+
+  validates :display_order, numericality: { only_integer: true }
 end

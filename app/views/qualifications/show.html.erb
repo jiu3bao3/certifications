@@ -1,4 +1,5 @@
 <div class="contents">
+  <h1><%= @qualification.name_ja %></h1>
   <%= link_to I18n.t('labels.index'), qualifications_path %>
   <table>
     <thead>
@@ -43,8 +44,9 @@
     <div style="clear:both;"></div>
   </div>
   <div>
-    <% if @grades.present? %>
-      <h2><%= Grade.model_name.human %></h2>
+    <h2><%= Grade.model_name.human %></h2>
+    <%= link_to 'グレード作成', new_qualification_grade_path(@qualification) %>
+    <% if @grades.present? %>  
       <table>
         <thead>
           <tr>
@@ -52,6 +54,8 @@
             <th><%= Grade.human_attribute_name(:description) %></th>
             <th style="width: 6em;"><%= Certificater.model_name.human %></th>
             <th style-"width: 8em;"><%= Examiner.model_name.human %></th>
+            <th style="width: 3em;"><%= I18n.t('labels.edit') %></th>
+            <th style="width: 3em;"><%= I18n.t('labels.destroy') %></th>
           </tr>
         </thead>
         <tbody>
@@ -66,6 +70,12 @@
                 <% else %>
                   <%= g.examiner&.name %>
                 <% end %>
+              </td>
+              <td>
+              <%= button_to I18n.t('labels.edit'), edit_qualification_grade_path(@qualification, g), { method: :get } %>
+              </td>
+              <td>
+                <%= button_to I18n.t('labels.destroy'), qualification_grade_path(@qualification, g), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'} } %>
               </td>
             </tr>
           <% end %>
