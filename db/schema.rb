@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_30_025043) do
   create_table "grades", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", comment: "グレード", force: :cascade do |t|
     t.bigint "qualification_id", null: false, comment: "資格ID"
     t.string "grade_name", comment: "グレード"
+    t.integer "display_order", default: 0, null: false, comment: "表示順"
     t.string "description", comment: "説明"
     t.bigint "certificater_id", null: false, comment: "認定者"
     t.bigint "examiner_id", comment: "試験実施者"

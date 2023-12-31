@@ -5,6 +5,7 @@ class QualificationsController < ApplicationController
 
   def show
     @qualification = Qualification.includes(:category).find(params[:id])
+    @grades = @qualification.grades&.includes(%i[certificater examiner]).order(:display_order)
   end
 
   def new

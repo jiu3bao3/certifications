@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :qualifications
-  resources :grades
+  resources :qualifications do
+    resources :grades
+  end
 end

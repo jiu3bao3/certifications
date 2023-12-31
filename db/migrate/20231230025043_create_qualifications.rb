@@ -34,6 +34,7 @@ class CreateQualifications < ActiveRecord::Migration[7.1]
     create_table :grades, comment: 'グレード' do |t|
       t.references :qualification, null: false, foreign_key: true, comment: '資格ID'
       t.string :grade_name, null: true, comment: 'グレード'
+      t.integer :display_order, null: false, default: 0, comment: '表示順'
       t.string :description, null: true, comment: '説明'
       t.references :certificater, null: false, foreign_key: true, comment: '認定者'
       t.references :examiner, null: true, foreign_key: true, comment: '試験実施者'

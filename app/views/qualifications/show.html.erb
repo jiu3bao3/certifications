@@ -42,4 +42,35 @@
     </div>
     <div style="clear:both;"></div>
   </div>
+  <div>
+    <% if @grades.present? %>
+      <h2><%= Grade.model_name.human %></h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 5em;"><%= Grade.human_attribute_name(:grade_name) %></th>
+            <th><%= Grade.human_attribute_name(:description) %></th>
+            <th style="width: 6em;"><%= Certificater.model_name.human %></th>
+            <th style-"width: 8em;"><%= Examiner.model_name.human %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @grades.each do |g| %>
+            <tr class="<%= cycle('even', 'odd') %>">
+              <td><%= g.grade_name %></td>
+              <td><%= g.description %></td>
+              <td><%= g.certificater&.name_ja %></td>
+              <td>
+                <% if g.examiner.url.present? %>
+                  <%= link_to g.examiner&.name, g.examiner.url, target: '_blank' %>
+                <% else %>
+                  <%= g.examiner&.name %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+     </table>
+    <% end %>
+  </div>
 </div>
