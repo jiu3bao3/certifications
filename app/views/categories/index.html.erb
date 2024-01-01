@@ -1,0 +1,31 @@
+<div class="contents">
+  <h1><%= Category.model_name.human %></h1>
+  <%= button_to I18n.t('labels.new'), new_category_path, method: :get, class: 'submit_button' %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= Category.human_attribute_name(:id) %></th>
+        <th><%= Category.human_attribute_name(:name_ja) %></th>
+        <th><%= Category.human_attribute_name(:name_en) %></th>
+        <th style="width: 5em;"><%= Category.human_attribute_name(:qualifications_count) %></th>
+        <th style="width: 3em;"><%= I18n.t('labels.show') %></th>
+        <th style="width: 3em;"><%= I18n.t('labels.edit') %></th>
+        <th style="width: 3em;"><%= I18n.t('labels.destroy') %></th>
+      </tr>
+    </thead>
+    <tobody>
+      <% @categories.each do |c| %>
+        <tr>
+          <td><%= c.id %></td>
+          <td><%= c.name_ja %></td>
+          <td><%= c.name_en %></td>
+          <td style="text-align: right;"><%= c.qualifications_count %>
+          <td><%= button_to I18n.t('labels.show'), category_path(c), { method: :get } %></td>
+          <td><%= button_to I18n.t('labels.edit'), edit_category_path(c), { method: :get } %></td>
+          <td><%= button_to I18n.t('labels.destroy'), category_path(c), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'} } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= button_to I18n.t('labels.new'), new_category_path, method: :get, class: 'submit_button' %>
+</div>

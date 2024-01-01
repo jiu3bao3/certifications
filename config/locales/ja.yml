@@ -19,7 +19,12 @@ ja:
         official: '公的資格'
         vendor: '私的資格'
       grade:
+        id: '資格グレードID'
         grade_name: 'グレード名'
         display_order: '表示順'
         description: '説明'
-
+      category:
+        id: 'カテゴリーID'
+        name_ja: 'カテゴリー名'
+        name_en: 'カテゴリー名（英語）'
+        qualifications_count: '資格数'

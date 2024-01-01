@@ -1,0 +1,6 @@
+<div class="contents">
+  <h1><%= Category.model_name.human %></h1>
+  <%= link_to I18n.t('labels.index'), categories_path %>
+  <%= render partial: "form", locals: { category: @category } %>
+  <%= link_to I18n.t('labels.index'), categories_path %>
+</div>

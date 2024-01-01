@@ -9,6 +9,7 @@ ja:
     value: '内容'
     save: '保存'
     detail: '詳細'
+    search: '検索'
   messages:
     registered: '登録しました。'
     updated: '更新しました。'

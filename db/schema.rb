@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_30_025043) do
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", comment: "カテゴリー", force: :cascade do |t|
     t.string "name_ja", null: false, comment: "カテゴリー名"
     t.string "name_en", comment: "カテゴリー英語名"
+    t.integer "qualifications_count", default: 0, null: false, comment: "登録資格数（counter cache用）"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

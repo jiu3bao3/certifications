@@ -3,6 +3,7 @@ class CreateQualifications < ActiveRecord::Migration[7.1]
     create_table :categories, comment: 'カテゴリー' do |t|
       t.string :name_ja, null: false, comment: 'カテゴリー名'
       t.string :name_en, null: true, comment: 'カテゴリー英語名'
+      t.integer :qualifications_count, null: false, default: 0, comment: '登録資格数（counter cache用）'
       t.timestamps
     end
 

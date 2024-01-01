@@ -1,0 +1,27 @@
+<div class="contents">
+  <h1><%= Category.model_name.human %></h1>
+  <%= link_to I18n.t('labels.index'), categories_path %>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:10em;"><%= I18n.t('labels.item') %></th>
+        <th><%= I18n.t('labels.value') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th><%= Category.human_attribute_name(:id) %></th>
+        <td><%= @category.id %></td>
+      </tr>
+      <tr>
+        <th><%= Category.human_attribute_name(:name_ja) %></th>
+        <td><%= @category.name_ja %></td>
+      </tr>
+      <tr>
+        <th><%= Category.human_attribute_name(:name_en) %></th>
+        <td><%= @category.name_en %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to I18n.t('labels.index'), categories_path %>
+</div>

@@ -21,7 +21,7 @@
 #
 class Qualification < ApplicationRecord
   enum :classification, %i[national official vendor]
-  belongs_to :category
+  belongs_to :category, counter_cache: true
   has_many :grades, dependent: :destroy
 
   validates :name_ja, presence: true
