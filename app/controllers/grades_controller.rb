@@ -10,7 +10,7 @@ class GradesController < ApplicationController
     if @grade.save
       redirect_to qualification_path(params[:qualification_id])
     else
-      flash.now[:error] = @grade.errors.first.full_message
+      flash.now[:alert] = @grade.errors.first.full_message
       render :new
     end
   end
@@ -24,7 +24,7 @@ class GradesController < ApplicationController
     if @grade.update(request_params)
       redirect_to qualification_path(params[:qualification_id])
     else
-      flash.now[:error] = @grade.errors.first.full_message
+      flash.now[:alert] = @grade.errors.first.full_message
       render :edit
     end
   end
@@ -35,7 +35,7 @@ class GradesController < ApplicationController
       flash[:notice] = I18n.t('messages.destroyed')
       redirect_to qualification_path(params[:qualification_id])
     else
-      flash.now[:error] = @grade.errors.first.full_message
+      flash.now[:alert] = @grade.errors.first.full_message
     end
   end
 

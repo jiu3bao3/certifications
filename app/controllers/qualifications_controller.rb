@@ -19,7 +19,7 @@ class QualificationsController < ApplicationController
       flash[:notice] = I18n.t('messages.registered')
       redirect_to edit_qualification_path(@qualification)
     else
-      flash.now[:notice] = @qualification.errors.first.full_message
+      flash.now[:alert] = @qualification.errors.first.full_message
       render :new
     end
   end
@@ -34,7 +34,7 @@ class QualificationsController < ApplicationController
       flash[:notice] = I18n.t('messages.updated')
       redirect_to edit_qualification_path(@qualification)
     else
-      flash.now[:notice] = @qualification.errors.first.full_message
+      flash.now[:alert] = @qualification.errors.first.full_message
       render :edit
     end
   end

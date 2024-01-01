@@ -11,11 +11,16 @@
   </head>
 
   <body>
-    <div class="messages">
-      <% flash.each do |message_type, message| %>
-        <div class="<%= message_type %>"><%= message %></div>
-      <% end %>
+    <div class="menu_area">
+      <%= render partial: 'layouts/menu' %>
     </div>
-    <%= yield %>
+    <div class="main">
+      <div class="messages">
+        <% flash.each do |message_type, message| %>
+          <div class="<%= message_type %>"><%= message %></div>
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>

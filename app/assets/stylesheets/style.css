@@ -1,10 +1,11 @@
 body 
 {
+  margin: 0 0 0 0;
   background-color:aliceblue
 }
 table
 {
-  width: 80%;
+  width: 100%;
 }
 table tr td, th
 {
@@ -14,10 +15,15 @@ h1
 {
   text-align: center;
 }
-.contents {
+.main
+{
+  float: left; 
+  padding: 0 0 0 0;
   width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+}
+.contents {
+  width: auto;
+  margin-left: 2em;
 }
 .even 
 {
@@ -52,12 +58,58 @@ h1
 }
 .messages
 {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
   font-weight: bold;
 }
 .borderless
 {
   border: none;
+}
+.menu_area
+{
+  width: 10em; 
+  float:left;
+}
+.menu_title
+{
+  font-size: 1.2em;
+  text-align: center;
+  margin: 0 0 0 0;
+  color: white;
+  border: 1px solid bisque;
+  background-color: blueviolet;
+}
+.menu_list
+{
+  margin: 0 0 0 0;
+  list-style-type: none;
+  padding-inline-start: 0; 
+  margin-block-start: 0; 
+  list-style: none;
+}
+.menu_item
+{
+  color: white;
+  border: 1px solid bisque;
+  background-color: blueviolet;
+  text-align: center;
+}
+.menu_item a:link
+{
+  color: white;
+  text-decoration: none;
+}
+.menu_item a:visited
+{
+  color: white;
+  text-decoration: none;
+}
+.menu_item a:hover
+{
+  color: white;
+  text-decoration: none;
+}
+.menu_item a:active
+{
+  color: white;
+  text-decoration: none;
 }
