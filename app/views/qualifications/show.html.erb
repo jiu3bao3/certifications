@@ -63,7 +63,7 @@
             <tr class="<%= cycle('even', 'odd') %>">
               <td><%= g.grade_name %></td>
               <td><%= g.description %></td>
-              <td><%= g.certificater&.name_ja %></td>
+              <td><%= link_to g.certificater.name_ja, certificater_path(g.certificater) %></td>
               <td>
                 <% if g.examiner.url.present? %>
                   <%= link_to g.examiner&.name, g.examiner.url, target: '_blank' %>
