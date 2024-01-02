@@ -29,3 +29,8 @@ ja:
         name_en: 'カテゴリー名（英語）'
         qualifications_count: '資格数'
         description: '説明'
+      certificater:
+        id: '資格認定機関ID'
+        name_ja: '資格認定機関名'
+        name_en: '資格認定機関名（英語）'
+        description: '説明'

@@ -1,0 +1,29 @@
+<div class="contents">
+  <h1><%= Certificater.model_name.human %></h1>
+  <%= link_to I18n.t('labels.index'), certificaters_path %>
+  <table>
+    <thead>
+      <th style="width:10em;"><%= I18n.t('labels.item') %></th>
+      <th><%= I18n.t('labels.value') %></th>
+    </thead>
+    <tbody>
+      <tr>
+        <th><%= Certificater.human_attribute_name(:id) %></th>
+        <td><%= @certificater.id %></td>
+      </tr>
+      <tr>
+        <th><%= Certificater.human_attribute_name(:name_ja) %></th>
+        <td><%= @certificater.name_ja %></td>
+      </tr>
+      <tr>
+        <th><%= Certificater.human_attribute_name(:name_en) %></th>
+        <td><%= @certificater.name_en %></td>
+      </tr>
+      <tr>
+        <th><%= Certificater.human_attribute_name(:description) %></th>
+        <td><%= safe_join((@certificater.description || '').split("\n"), tag(:br)) %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to I18n.t('labels.index'), certificaters_path %>
+</div>

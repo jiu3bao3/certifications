@@ -15,4 +15,6 @@
 #
 class Certificater < ApplicationRecord
   has_many :grade, dependent: :destroy
+
+  validates :name_ja, presence: true
 end

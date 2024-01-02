@@ -1,0 +1,6 @@
+<div class="contents">
+  <h1><%= Certificater.model_name.human %></h1>
+  <%= link_to I18n.t('labels.index'), certificaters_path %>
+  <%= render partial: "form", locals: { certificater: @certificater } %>
+  <%= link_to I18n.t('labels.index'), certificaters_path %>
+</div>

@@ -1,0 +1,30 @@
+<%= form_with(model: certificater, data: { turbo: false }) do |f| %>
+  <div style="width: 80%;text-align:right;">
+    <%= f.submit I18n.t('labels.save'), class: 'submit_button' %>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:15em;"><%= I18n.t('labels.item') %></th>
+        <th><%= I18n.t('labels.value') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th><%= f.label :name_ja, Certificater.human_attribute_name(:name_ja) %></th>
+        <td><%= f.text_field :name_ja, class: 'text_field' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :name_en, Certificater.human_attribute_name(:name_en) %></th>
+        <td><%= f.text_field :name_en, class: 'text_field' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :description, Certificater.human_attribute_name(:description) %></th>
+        <td><%= f.text_area :description, class: 'text_area' %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="width: 80%;text-align:right;">
+    <%= f.submit I18n.t('labels.save'), class: 'submit_button' %>
+  </div>
+<% end %>
