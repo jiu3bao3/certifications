@@ -4,3 +4,5 @@ ja:
     items:
       qualification: '資格'
       category: 'カテゴリー'
+      examiner: '試験実施機関'
+      certificater: '資格認定機関'

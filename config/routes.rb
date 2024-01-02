@@ -7,9 +7,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :categories
+  resources :examiners
+  resources :certificaters
   resources :qualifications do
     resources :grades, except: %i[index]
   end
-  resources :categories
+
   root to: "qualifications#index"
 end

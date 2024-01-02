@@ -5,7 +5,7 @@ ja:
       grade: 'グレード'
       category: 'カテゴリー'
       examiner: '試験実施機関'
-      certificater: '認定機関'
+      certificater: '資格認定機関'
     attributes:
       qualification:
         id: '資格ID'
