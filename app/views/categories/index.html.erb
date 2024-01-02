@@ -4,7 +4,7 @@
   <table>
     <thead>
       <tr>
-        <th><%= Category.human_attribute_name(:id) %></th>
+        <th style="width: 5em;"><%= Category.human_attribute_name(:id) %></th>
         <th><%= Category.human_attribute_name(:name_ja) %></th>
         <th><%= Category.human_attribute_name(:name_en) %></th>
         <th style="width: 5em;"><%= Category.human_attribute_name(:qualifications_count) %></th>
@@ -16,7 +16,7 @@
     <tobody>
       <% @categories.each do |c| %>
         <tr>
-          <td><%= c.id %></td>
+          <td style="text-align:right;"><%= c.id %></td>
           <td><%= c.name_ja %></td>
           <td><%= c.name_en %></td>
           <td style="text-align: right;"><%= c.qualifications_count %>

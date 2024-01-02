@@ -1,15 +1,17 @@
 class CreateQualifications < ActiveRecord::Migration[7.1]
   def change
     create_table :categories, comment: 'カテゴリー' do |t|
-      t.string :name_ja, null: false, comment: 'カテゴリー名'
+      t.string :name_ja, null: false, index: { unique: true }, comment: 'カテゴリー名'
       t.string :name_en, null: true, comment: 'カテゴリー英語名'
+      t.string :description, null: true, comment: '説明'
       t.integer :qualifications_count, null: false, default: 0, comment: '登録資格数（counter cache用）'
       t.timestamps
     end
 
     create_table :certificaters, comment: '認定者' do |t|
-      t.string :name_ja, null: false, comment: '認定者名'
+      t.string :name_ja, null: false, index: { unique: true }, comment: '認定者名'
       t.string :name_en, null: true, comment: '認定者英語名'
+      t.string :description, null: true, comment: '説明'
       t.timestamps
     end
 

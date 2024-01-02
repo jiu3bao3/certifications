@@ -50,6 +50,6 @@ class CategoriesController < ApplicationController
   private
 
   def request_params
-    params.require(:category).permit(:name_ja, :name_en)
+    params.require(:category).permit(:name_ja, :name_en, :description)
   end
 end

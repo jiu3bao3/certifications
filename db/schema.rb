@@ -14,16 +14,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_30_025043) do
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", comment: "カテゴリー", force: :cascade do |t|
     t.string "name_ja", null: false, comment: "カテゴリー名"
     t.string "name_en", comment: "カテゴリー英語名"
+    t.string "description", comment: "説明"
     t.integer "qualifications_count", default: 0, null: false, comment: "登録資格数（counter cache用）"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name_ja"], name: "index_categories_on_name_ja", unique: true
   end
 
   create_table "certificaters", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", comment: "認定者", force: :cascade do |t|
     t.string "name_ja", null: false, comment: "認定者名"
     t.string "name_en", comment: "認定者英語名"
+    t.string "description", comment: "説明"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name_ja"], name: "index_certificaters_on_name_ja", unique: true
   end
 
   create_table "examiners", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", comment: "試験実施者", force: :cascade do |t|

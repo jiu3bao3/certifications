@@ -15,6 +15,12 @@ h1
 {
   text-align: center;
 }
+address
+{
+  color: white;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  border: 1px dotted bisque;
+}
 .main
 {
   float: left; 
@@ -68,6 +74,7 @@ h1
 {
   width: 10em; 
   float:left;
+  background-color: blueviolet;
 }
 .menu_title
 {
@@ -76,7 +83,6 @@ h1
   margin: 0 0 0 0;
   color: white;
   border: 1px solid bisque;
-  background-color: blueviolet;
 }
 .menu_list
 {
@@ -90,7 +96,6 @@ h1
 {
   color: white;
   border: 1px solid bisque;
-  background-color: blueviolet;
   text-align: center;
 }
 .menu_item a:link

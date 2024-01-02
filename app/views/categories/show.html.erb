@@ -21,6 +21,10 @@
         <th><%= Category.human_attribute_name(:name_en) %></th>
         <td><%= @category.name_en %></td>
       </tr>
+      <tr>
+        <th><%= Category.human_attribute_name(:description) %></th>
+        <td><%= safe_join((@category.description || '').split("\n"), tag(:br)) %></td>
+      </tr>
     </tbody>
   </table>
   <%= link_to I18n.t('labels.index'), categories_path %>
