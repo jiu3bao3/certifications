@@ -14,7 +14,7 @@
     </thead>
     <tbody>
       <% @certificaters.each do |c| %>
-        <tr style="<%= cycle('even', 'odd') %>">
+        <tr class="<%= cycle('even', 'odd') %>">
           <td style="text-align: right;"><%= c.id %></td>
           <td><%= c.name_ja %></td>
           <td><%= c.name_en %></td>

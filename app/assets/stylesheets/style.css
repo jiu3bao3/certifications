@@ -118,3 +118,9 @@ address
   color: white;
   text-decoration: none;
 }
+.systeminfo
+{
+  padding-left: 0.5em;
+  font-size: 0.9em;
+  color:turquoise;
+}
