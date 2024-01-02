@@ -14,4 +14,9 @@
 #
 class Examiner < ApplicationRecord
   has_many :grade
+
+  validates :name, presence: true
+  validates :zipcode, format: { with: /\d{3}\-\d{4}/ }, allow_blank: true
+  validates :corporate_number, numericality: { only_integer: true }, allow_blank: true
+  validates :url, format: { with: /https?:\/\/([\w\-_]+\.)+[\w]+\/.*/ }, allow_blank: true
 end

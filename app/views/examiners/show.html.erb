@@ -1,0 +1,48 @@
+<div class="contents">
+  <h1><%= Examiner.model_name.human %></h1>
+  <%= link_to I18n.t('labels.index'), examiners_path %>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:10em;"><%= I18n.t('labels.item') %></th>
+        <th><%= I18n.t('labels.value') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th><%= Examiner.human_attribute_name(:id) %></th>
+        <td><%= @examiner.id %></td>
+      </tr>
+      <tr>
+        <th><%= Examiner.human_attribute_name(:corporate_number) %></th>
+        <td><%= @examiner.corporate_number %></td>
+      </tr>
+      <tr>
+        <th><%= Examiner.human_attribute_name(:url) %></th>
+        <td>
+          <% if @examiner.url.present? %>
+            <a target="_blank" href="<%= @examiner.url %>"><%= @examiner.url %></a>
+          <% else %>
+            <%= @examiner.name %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= Examiner.human_attribute_name(:name) %></th>
+        <td><%= @examiner.name %></td>
+      </tr>
+      <tr>
+        <th><%= Examiner.human_attribute_name(:address) %></th>
+        <td>
+          〒<%= @examiner.zipcode %><br />
+          <%= @examiner.address %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= Examiner.human_attribute_name(:tel) %></th>
+        <td><%= @examiner.tel %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to I18n.t('labels.index'), examiners_path %>
+</div>

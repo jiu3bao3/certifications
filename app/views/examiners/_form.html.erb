@@ -1,0 +1,38 @@
+<%= form_with(model: examiner, data: { turbo: false }) do |f| %>
+  <div style="width: 80%;text-align:right;">
+    <%= f.submit I18n.t('labels.save'), class: 'submit_button' %>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:10em;"><%= I18n.t('labels.item') %></th>
+        <th><%= I18n.t('labels.value') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th><%= f.label :name %></th>
+        <td><%= f.text_field :name, class: 'text_field' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :corporate_number %></th>
+        <td><%= f.text_field :corporate_number, class: 'text_field' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :address %></th>
+        <td>〒<%= f.text_field :zipcode %> <%= f.text_field :address, class: 'text_field' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :tel %></th>
+        <td><%= f.text_field :tel, class: 'text_field' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :url %></th>
+        <td><%= f.text_field :url, class: 'text_field' %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="width: 80%;text-align:right;">
+    <%= f.submit I18n.t('labels.save'), class: 'submit_button' %>
+  </div>
+<% end %>

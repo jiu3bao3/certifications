@@ -1,3 +1,35 @@
 <div class="contents">
   <h1><%= Examiner.model_name.human %></h1>
+  <%= button_to I18n.t('labels.new'), new_examiner_path, method: :get, class: 'submit_button' %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= Examiner.human_attribute_name(:id) %></th>
+        <th><%= Examiner.human_attribute_name(:name) %></th>
+        <th><%= Examiner.human_attribute_name(:address) %></th>
+        <th style="width: 3em;"><%= I18n.t('labels.show') %></th>
+        <th style="width: 3em;"><%= I18n.t('labels.edit') %></th>
+        <th style="width: 3em;"><%= I18n.t('labels.destroy') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @examiners.each do |e| %>
+        <tr class="<%= cycle('even', 'odd') %>">
+          <td style="text-align: right;"><%= e.id %></td>
+          <td>
+            <% if e.url.present? %>
+              <a target="_blank" href="<%= e.url %>"><%= e.name %></a>
+            <% else %>
+              <%= e.name %>
+            <% end %>
+          </td>
+          <td><%= e.address %></td>
+          <td><%= button_to I18n.t('labels.show'), examiner_path(e), { method: :get } %></td>
+          <td><%= button_to I18n.t('labels.edit'), edit_examiner_path(e), { method: :get } %></td>
+          <td><%= button_to I18n.t('labels.destroy'), examiner_path(e), { method: :delete, data: { turbo_confirm: I18n.t('messages.delete_confirm') }} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= button_to I18n.t('labels.new'), new_examiner_path, method: :get, class: 'submit_button' %>
 </div>
