@@ -39,7 +39,7 @@
       <%= button_to I18n.t('labels.edit'), edit_qualification_path(@qualification), { method: :get, class: 'submit_button' } %>
     </div>
     <div style="float:left; margin-left: 1em;">
-      <%= button_to I18n.t('labels.destroy'), qualification_path(@qualification), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'}, class: 'submit_button' } %>
+      <%= button_to I18n.t('labels.destroy'), qualification_path(@qualification), { method: :delete, data: { turbo_confirm: I18n.t('messages.delete_confirm') }, class: 'submit_button' } %>
     </div>
     <div style="clear:both;"></div>
   </div>
@@ -75,7 +75,7 @@
               <%= button_to I18n.t('labels.edit'), edit_qualification_grade_path(@qualification, g), { method: :get } %>
               </td>
               <td>
-                <%= button_to I18n.t('labels.destroy'), qualification_grade_path(@qualification, g), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'} } %>
+                <%= button_to I18n.t('labels.destroy'), qualification_grade_path(@qualification, g), { method: :delete, data: { turbo_confirm: I18n.t('messages.delete_confirm') } } %>
               </td>
             </tr>
           <% end %>

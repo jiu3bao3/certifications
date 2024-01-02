@@ -14,3 +14,4 @@ ja:
     registered: '登録しました。'
     updated: '更新しました。'
     destroyed: '削除しました。'
+    delete_confirm: '削除してよろしいですか？'

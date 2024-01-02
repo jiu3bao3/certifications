@@ -21,7 +21,7 @@
           <td><%= q.name_ja %></td>
           <td><%= button_to I18n.t('labels.show'), qualification_path(q), { method: :get } %></td>
           <td><%= button_to I18n.t('labels.edit'), edit_qualification_path(q), { method: :get } %></td>
-          <td><%= button_to I18n.t('labels.destroy'), qualification_path(q), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'} } %></td>
+          <td><%= button_to I18n.t('labels.destroy'), qualification_path(q), { method: :delete, data: { turbo_confirm: I18n.t('messages.delete_confirm') }} %></td>
         </tr>
       <% end %>
     </tbody>

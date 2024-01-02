@@ -22,7 +22,7 @@
           <td style="text-align: right;"><%= c.qualifications_count %>
           <td><%= button_to I18n.t('labels.show'), category_path(c), { method: :get } %></td>
           <td><%= button_to I18n.t('labels.edit'), edit_category_path(c), { method: :get } %></td>
-          <td><%= button_to I18n.t('labels.destroy'), category_path(c), { method: :delete, data: { turbo_confirm: '削除してよろしいですか'} } %></td>
+          <td><%= button_to I18n.t('labels.destroy'), category_path(c), { method: :delete, data: { turbo_confirm: I18n.t('messages.delete_confirm') }} %></td>
         </tr>
       <% end %>
     </tbody>

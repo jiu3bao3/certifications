@@ -1,3 +1,27 @@
 <div class="contents">
   <h1><%= Certificater.model_name.human %></h1>
+  <table>
+    <thead>
+      <tr>
+        <th><%= Certificater.human_attribute_name(:id) %></th>
+        <th><%= Certificater.human_attribute_name(:name_ja) %></th>
+        <th><%= Certificater.human_attribute_name(:name_en) %></th>
+        <th style="width: 3em;"><%= I18n.t('labels.show') %></th>
+        <th style="width: 3em;"><%= I18n.t('labels.edit') %></th>
+        <th style="width: 3em;"><%= I18n.t('labels.destroy') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @certificaters.each do |c| %>
+        <tr style="<%= cycle('even', 'odd') %>">
+          <td style="text-align: right;"><%= c.id %></td>
+          <td><%= c.name_ja %></td>
+          <td><%= c.name_en %></td>
+          <td><%= button_to I18n.t('labels.show'), certificater_path(c), { method: :get } %></td>
+          <td><%= button_to I18n.t('labels.edit'), edit_certificater_path(c), { method: :get } %></td>
+          <td><%= button_to I18n.t('labels.destroy'), certificater_path(c), { method: :delete, data: { turbo_confirm: I18n.t('messages.delete_confirm') }} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
