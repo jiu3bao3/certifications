@@ -1,7 +1,7 @@
 <div class="contents">
   <h1><%= Examiner.model_name.human %></h1>
-  <%= button_to I18n.t('labels.new'), new_examiner_path, method: :get, class: 'submit_button' %>
-  <table>
+  <%= button_to I18n.t('labels.new'), new_examiner_path, method: :get, class: 'submit_button', name: 'new_examiner_button' %>
+  <table id="examiners_table">
     <thead>
       <tr>
         <th><%= Examiner.human_attribute_name(:id) %></th>
@@ -31,5 +31,5 @@
       <% end %>
     </tbody>
   </table>
-  <%= button_to I18n.t('labels.new'), new_examiner_path, method: :get, class: 'submit_button' %>
+  <%= button_to I18n.t('labels.new'), new_examiner_path, method: :get, class: 'submit_button', name: 'new_examiner_button' %>
 </div>
