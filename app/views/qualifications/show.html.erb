@@ -65,11 +65,7 @@
               <td><%= g.description %></td>
               <td><%= link_to g.certificater.name_ja, certificater_path(g.certificater) %></td>
               <td>
-                <% if g.examiner.url.present? %>
-                  <%= link_to g.examiner&.name, g.examiner.url, target: '_blank' %>
-                <% else %>
-                  <%= g.examiner&.name %>
-                <% end %>
+                <%= link_to g.examiner&.name, examiner_path(g.examiner) %>
               </td>
               <td>
               <%= button_to I18n.t('labels.edit'), edit_qualification_grade_path(@qualification, g), { method: :get } %>
