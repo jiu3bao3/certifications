@@ -23,7 +23,7 @@ Docker上で起動し，ブラウザで [http://localhost:3000/](http://localhos
 <summary>RSpec</summary>
 
 ```
-root@fee6deda187a:/app# bundle exec rspec
+root@f093759a148c:/app# bundle exec rspec
 
 Examiner
   validation
@@ -58,10 +58,16 @@ Examiner
       behaves like invalid_url
         is expected to raise ActiveRecord::RecordInvalid with message matching /URLは不正な値です/
 
-Finished in 3.68 seconds (files took 16.08 seconds to load)
-14 examples, 0 failures
+Examiners
+  GET examiners
+    資格認定機関一覧が表示されていること
+    新規登録ボタンで登録画面へ遷移すること
+    参照ボタンで詳細画面へ遷移すること
+    編集ボタンで編集画面へ遷移すること
+    削除ボタンで試験実施機関情報が削除されること
 
-root@fee6deda187a:/app# 
+Finished in 12.96 seconds (files took 8.6 seconds to load)
+19 examples, 0 failures
 ```
 </details>
 
