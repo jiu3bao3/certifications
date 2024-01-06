@@ -45,4 +45,27 @@ RSpec.describe "Examiners", type: :system, js: true do
       expect(Examiner.all.count).to eq(2)
     end
   end
+
+  describe 'POST examiners' do
+    let(:examiner_name) { "試験実施団体" }
+    let(:form_data) { { examiner_name:, examiner_corporate_number: 1234567890, examiner_zipcode: '123-4567', examiner_address: '北海道国後郡泊村', examiner_tel: '0123-45-6789', examiner_url: 'https://www.example.com/' } }
+    before { visit new_examiner_path }
+
+    it '正常に登録できること' do
+      form_data.each { |k,v| page.fill_in(k, with: v) }
+      page.all(:xpath, '//input[@type="submit"]')[0].click
+      expect(page.current_path).to eq("/examiners")
+      expect(Examiner.count).to eq(4)
+    end
+
+    context '既に同じ名称が登録済' do
+      let(:examiner_name) { "試験実施機関0" }
+      it '登録できないこと' do
+        form_data.each { |k,v| page.fill_in(k, with: v) }
+        page.all(:xpath, '//input[@type="submit"]')[0].click
+        expect(page.has_text?("試験実施機関名はすでに存在します", wait: 3))
+        expect(Examiner.count).to eq(3)
+      end
+    end
+  end
 end
