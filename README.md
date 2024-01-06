@@ -23,7 +23,7 @@ Docker上で起動し，ブラウザで [http://localhost:3000/](http://localhos
 <summary>RSpec</summary>
 
 ```
-root@f093759a148c:/app# bundle exec rspec
+root@67756099960e:/app# bundle exec rspec
 
 Examiner
   validation
@@ -65,9 +65,13 @@ Examiners
     参照ボタンで詳細画面へ遷移すること
     編集ボタンで編集画面へ遷移すること
     削除ボタンで試験実施機関情報が削除されること
+  POST examiners
+    正常に登録できること
+    既に同じ名称が登録済
+      登録できないこと
 
-Finished in 12.96 seconds (files took 8.6 seconds to load)
-19 examples, 0 failures
+Finished in 15.98 seconds (files took 9.15 seconds to load)
+21 examples, 0 failures
 ```
 </details>
 
