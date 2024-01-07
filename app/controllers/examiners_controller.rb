@@ -39,6 +39,7 @@ class ExaminersController < ApplicationController
   def destroy
     @examiner = Examiner.find(params[:id])
     if @examiner.destroy
+      flash[:notice] = I18n.t('messages.destroyed')
       redirect_to examiners_path
     else
       flash.now[:alert] = @examiner.errors.first.full_message
