@@ -6,6 +6,13 @@
 Docker上で起動し，ブラウザで [http://localhost:3000/](http://localhost:3000/) にアクセスする
 
 <details>
+<summary>ERD</summary>
+
+![ERD](public/images/ERD.svg)
+
+</details>
+
+<details>
 <summary>画面の例</summary>
 
 * 資格一覧画面
