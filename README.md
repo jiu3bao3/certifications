@@ -8,7 +8,7 @@ Docker上で起動し，ブラウザで [http://localhost:3000/](http://localhos
 <details>
 <summary>ERD</summary>
 
-![ERD](public/images/ERD.svg?ver=1)
+![ERD](public/images/ERD1.svg)
 
 </details>
 
