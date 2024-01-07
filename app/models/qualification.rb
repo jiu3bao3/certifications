@@ -20,7 +20,7 @@
 #  fk_rails_...  (category_id => categories.id)
 #
 class Qualification < ApplicationRecord
-  enum :classification, %i[national official vendor]
+  enum :classification, %i[national official vendor], validate: true
   belongs_to :category, counter_cache: true
   has_many :grades, dependent: :destroy
 
