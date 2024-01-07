@@ -23,7 +23,7 @@ Docker上で起動し，ブラウザで [http://localhost:3000/](http://localhos
 <summary>RSpec</summary>
 
 ```
-root@67756099960e:/app# bundle exec rspec
+root@67756099960e:/app# bundle exec rspec 
 
 Examiner
   validation
@@ -69,9 +69,15 @@ Examiners
     正常に登録できること
     既に同じ名称が登録済
       登録できないこと
+  GET examiners/:id/edit
+    既存データが正しく入力欄にセットされていること
+  PATCH examiners/:id
+    正しく更新できること
+    更新する値が不正
+      エラーメッセージが表示され，更新できないこと
 
-Finished in 15.98 seconds (files took 9.15 seconds to load)
-21 examples, 0 failures
+Finished in 16.15 seconds (files took 10.71 seconds to load)
+24 examples, 0 failures
 ```
 </details>
 
