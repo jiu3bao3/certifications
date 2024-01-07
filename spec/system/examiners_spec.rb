@@ -56,6 +56,7 @@ RSpec.describe "Examiners", type: :system, js: true do
       page.all(:xpath, '//input[@type="submit"]')[0].click
       expect(page.current_path).to eq("/examiners")
       expect(Examiner.count).to eq(4)
+      expect(Examiner.last.as_json).to include(form_data.map { |k,v| [k.to_s.gsub(/examiner_/, ''), v] }.to_h)
     end
 
     context '既に同じ名称が登録済' do
