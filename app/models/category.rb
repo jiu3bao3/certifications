@@ -16,4 +16,6 @@
 #
 class Category < ApplicationRecord
   has_many :qualifications, dependent: :destroy
+
+  validates :name_ja, presence: true, uniqueness: true
 end
