@@ -29,5 +29,6 @@ class Grade < ApplicationRecord
   belongs_to :examiner
   belongs_to :certificater
 
+  validates :grade_name, uniqueness: { scope: :qualification }
   validates :display_order, numericality: { only_integer: true }
 end
