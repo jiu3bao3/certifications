@@ -46,7 +46,7 @@
   <div>
     <h2><%= Grade.model_name.human %></h2>
     <%= link_to 'グレード作成', new_qualification_grade_path(@qualification) %>
-    <% if @grades.present? %>  
+    <% if @qualification.grades.present? %>  
       <table>
         <thead>
           <tr>
@@ -59,7 +59,8 @@
           </tr>
         </thead>
         <tbody>
-          <% @grades.each do |g| %>
+        <%= @qualification.grades.size %>
+          <% @qualification.grades.each do |g| %>
             <tr class="<%= cycle('even', 'odd') %>">
               <td><%= g.grade_name %></td>
               <td><%= g.description %></td>

@@ -1,11 +1,20 @@
 class QualificationsController < ApplicationController
+  wrap_parameters format: [:json, :xml, :url_encoded_form, :multipart_form]
+
   def index
     @qualifications = search
+    respond_to do |format|
+      format.html { render index: @qualifications }
+      format.json { render json: @qualifications }
+    end
   end
 
   def show
-    @qualification = Qualification.includes(:category).find(params[:id])
-    @grades = @qualification.grades&.includes(%i[certificater examiner]).order(:display_order)
+    @qualification = Qualification.includes(:category, { grades: %i[certificater examiner] }).find(params[:id])
+    respond_to do |format|
+      format.html { render show: @qualification }
+      format.json { render json: @qualification, serializer: QualificationSerializer }
+    end
   end
 
   def new
@@ -64,6 +73,6 @@ class QualificationsController < ApplicationController
   end
 
   def search_params
-    params.permit(:commit, :qualification_name, :category_id, classifications: %i[national official vendor])
+    params.permit(:commit, :qualification_name, :category_id, classifications: %i[national official vendor]).to_hash.symbolize_keys
   end
 end
