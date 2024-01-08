@@ -6,11 +6,13 @@ RSpec.describe Category, type: :model do
 
   describe 'validation' do
     let(:attributes) { { name_ja:, name_en: 'new category', description: '変更テスト' } }
+
     it 'エラーなく更新できること' do
       expect { category.update!(**attributes) }.not_to raise_error
       expect(category.as_json.symbolize_keys).to include(attributes)
       expect(category.qualifications_count).to eq(0)
     end
+
     context '既存のカテゴリー名と重複' do
       before { create(:category, name_ja:) }
       it 'バリデーションエラーとなること' do

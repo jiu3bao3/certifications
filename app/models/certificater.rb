@@ -16,5 +16,6 @@
 class Certificater < ApplicationRecord
   has_many :grade, dependent: :destroy
 
-  validates :name_ja, presence: true
+  validates :name_ja, presence: true, uniqueness: true
+  validates :name_en, format: { with: /\A[ -~\w]+\z/ }, allow_blank: true
 end
