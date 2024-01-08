@@ -27,6 +27,48 @@ Docker上で起動し，ブラウザで [http://localhost:3000/](http://localhos
 </details>
 
 <details>
+<summary>APIの例</summary>
+
+```
+curl -H "Accept: application/json" -X GET "http://localhost:3000/qualifications/11"
+
+{
+	"id": 11,
+	"name_ja": "旅行業務取扱管理者",
+	"name_en": null,
+	"classification": "国家資格",
+	"category": "事務／法律",
+	"grades": [
+		{
+			"id": 2,
+			"grade_name": "総合",
+			"display_order": 1,
+			"description": "海外及び国内の旅行業務を取り扱うことができる",
+			"examiner_name": "一般社団法人日本旅行業協会",
+			"certificater_name": "観光庁長官"
+		},
+		{
+			"id": 1,
+			"grade_name": "国内",
+			"display_order": 2,
+			"description": "国内旅行業務のみを取り扱うことができる",
+			"examiner_name": "一般社団法人全国旅行業協会",
+			"certificater_name": "観光庁長官"
+		},
+		{
+			"id": 3,
+			"grade_name": "地域限定",
+			"display_order": 3,
+			"description": null,
+			"examiner_name": "国土交通省観光庁",
+			"certificater_name": "観光庁長官"
+		}
+	]
+}
+```
+</details>
+
+<details>
 <summary>RSpec</summary>
 
 ```

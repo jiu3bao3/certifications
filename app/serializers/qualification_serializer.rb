@@ -10,6 +10,6 @@ class QualificationSerializer < ApplicationSerializer
   end
 
   def grades
-    ActiveModelSerializers::SerializableResource.new(object.grades, each_serializer: GradeSerializer).as_json
+    ActiveModelSerializers::SerializableResource.new(object.grades.order(:display_order), each_serializer: GradeSerializer).as_json
   end
 end
