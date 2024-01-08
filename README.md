@@ -30,7 +30,30 @@ Docker上で起動し，ブラウザで [http://localhost:3000/](http://localhos
 <summary>RSpec</summary>
 
 ```
-root@67756099960e:/app# bundle exec rspec 
+root@440b427f797c:/app# bundle exec rspec 
+
+Category
+  validation
+    エラーなく更新できること
+    既存のカテゴリー名と重複
+      バリデーションエラーとなること
+    カテゴリー名がブランク
+      バリデーションエラーとなること
+
+Certificater
+  validation
+    エラーなく更新できること
+    不正な認定機関名
+      既に存在する認定機関名がバリデーションエラーとなること
+      behaves like invalid_name
+        is expected to raise ActiveRecord::RecordInvalid with message matching /資格認定機関名を入力してください/
+      behaves like invalid_name
+        is expected to raise ActiveRecord::RecordInvalid with message matching /資格認定機関名を入力してください/
+    不正な認定機関英語名
+      behaves like invalid_name
+        is expected to raise ActiveRecord::RecordInvalid with message matching /資格認定機関名（英語）は不正な値です/
+      behaves like invalid_name
+        is expected to raise ActiveRecord::RecordInvalid with message matching /資格認定機関名（英語）は不正な値です/
 
 Examiner
   validation
@@ -65,6 +88,34 @@ Examiner
       behaves like invalid_url
         is expected to raise ActiveRecord::RecordInvalid with message matching /URLは不正な値です/
 
+Grade
+  validation
+    エラーなく更新できること
+    同一のグレードが存在する
+      既存グレードと同一の資格
+        is expected to raise ActiveRecord::RecordInvalid with message matching /グレード名はすでに存在します/
+      既存グレードと異なる資格
+        is expected not to raise Exception
+
+Qualification
+  validation
+    エラーなく更新できること
+    不正な区分
+      behaves like invalid_classification
+        is expected to raise ActiveRecord::RecordInvalid with message matching /区分は一覧にありません/
+      behaves like invalid_classification
+        is expected to raise ActiveRecord::RecordInvalid with message matching /区分は一覧にありません/
+      behaves like invalid_classification
+        is expected to raise ActiveRecord::RecordInvalid with message matching /区分は一覧にありません/
+    不正な名称
+      behaves like invalid_name_ja
+        is expected to raise ActiveRecord::RecordInvalid with message matching /資格名を入力してください/
+      behaves like invalid_name_ja
+        is expected to raise ActiveRecord::RecordInvalid with message matching /資格名を入力してください/
+  counter_cache
+    資格情報を作成した場合に当該カテゴリーのqualifications_countがインクリメントされること
+    資格情報を削除した場合に当該カテゴリーのqualifications_countがデクリメントされること
+
 Examiners
   GET examiners
     資格認定機関一覧が表示されていること
@@ -83,8 +134,8 @@ Examiners
     更新する値が不正
       エラーメッセージが表示され，更新できないこと
 
-Finished in 16.15 seconds (files took 10.71 seconds to load)
-24 examples, 0 failures
+Finished in 17.77 seconds (files took 9.94 seconds to load)
+44 examples, 0 failures
 ```
 </details>
 
