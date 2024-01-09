@@ -1,5 +1,5 @@
 class QualificationsController < ApplicationController
-  wrap_parameters format: [:json, :xml, :url_encoded_form, :multipart_form]
+  protect_from_forgery with: :null_session
 
   def index
     @qualifications = search
