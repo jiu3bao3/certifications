@@ -47,7 +47,10 @@ class QualificationsController < ApplicationController
       redirect_to edit_qualification_path(@qualification)
     else
       flash.now[:alert] = @qualification.errors.first.full_message
-      render :edit
+      respond_to do |format|
+        format.html { render edit: @qualification }
+        format.json { render json: { errors: @qualification.errors.full_messages.as_json }, status: :unprocessable_entity }
+      end
     end
   end
 
