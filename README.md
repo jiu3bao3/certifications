@@ -72,7 +72,7 @@ curl -H "Accept: application/json" -X GET "http://localhost:3000/qualifications/
 <summary>RSpec</summary>
 
 ```
-root@440b427f797c:/app# bundle exec rspec 
+root@5492364ca324:/app# bundle exec rspec
 
 Category
   validation
@@ -158,14 +158,30 @@ Qualification
     資格情報を作成した場合に当該カテゴリーのqualifications_countがインクリメントされること
     資格情報を削除した場合に当該カテゴリーのqualifications_countがデクリメントされること
 
+Qualifications
+  GET qualifications
+    is expected to include {:name_ja => "試験0", :classification => "国家資格", :category => "技術bf952c96-6a80-404c-8380-2c5ad8611047"}
+  POST qualifications
+    is expected to respond with status code :found (302)
+    不正なパラメータ
+      is expected to include "資格名を入力してください"
+  PATCH qualifications
+    is expected to eq "新検定試験"
+    不正なパラメータ
+      is expected to include "区分は一覧にありません"
+  DELETE qualifications
+    is expected to respond with status code :found (302)
+    削除対象が存在しない
+      is expected to respond with a not_found status code (404)
+
 Examiners
   GET examiners
     資格認定機関一覧が表示されていること
     新規登録ボタンで登録画面へ遷移すること
-    参照ボタンで詳細画面へ遷移すること
     編集ボタンで編集画面へ遷移すること
     削除ボタンで試験実施機関情報が削除されること
   POST examiners
+    参照ボタンで詳細画面へ遷移すること
     正常に登録できること
     既に同じ名称が登録済
       登録できないこと
@@ -176,8 +192,8 @@ Examiners
     更新する値が不正
       エラーメッセージが表示され，更新できないこと
 
-Finished in 17.77 seconds (files took 9.94 seconds to load)
-44 examples, 0 failures
+Finished in 31.92 seconds (files took 9.37 seconds to load)
+51 examples, 0 failures
 ```
 </details>
 

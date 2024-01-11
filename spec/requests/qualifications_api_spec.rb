@@ -59,6 +59,14 @@ RSpec.describe "Qualifications", type: :request do
       expect { delete(qualification_path(qualification), params: params.to_json, headers:) }.to change{ Qualification.count }.by(-1)
       expect(response).to have_http_status(:found)
     end
+
+    context '削除対象が存在しない' do
+      before { qualification.destroy! }
+      it do 
+        expect { delete(qualification_path(qualification), params: params.to_json, headers:) }.not_to change{ Qualification.count }
+        expect(response).to have_http_status(:not_found)
+      end
+    end
   end
 end
 
