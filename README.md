@@ -199,8 +199,9 @@ Finished in 31.92 seconds (files took 9.37 seconds to load)
 
 ## 環境
 * Ruby: 3.3
-* Rails: 7.1.2
+* Rails: 7.1.3.2
 * MySQL: 8.0
 
 ## 更新履歴
 * 2023.12.30 新規作成
+* 2024.02.26 ライブラリ更新
