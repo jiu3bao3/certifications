@@ -4,6 +4,7 @@
 #
 #  id                       :bigint           not null, primary key
 #  description(説明)        :string(255)
+#  display_order(表示順)    :integer          default(0), not null
 #  grade_name(グレード)     :string(255)
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
