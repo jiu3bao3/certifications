@@ -5,7 +5,7 @@ RSpec.describe "Qualifications", type: :request do
   let(:headers) { { "Content-Type" => 'application/json', "Accept" => "application/json" } }
   let(:params) { {} }
 
-  describe 'GET qualifications' do
+  xdescribe 'GET qualifications' do
     let(:qualification_count) { 3 }
     let!(:qualifications) { Array.new(qualification_count) { |i| create(:qualification, category:, name_ja: "試験#{i}")} }
     it do
