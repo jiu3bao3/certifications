@@ -5,7 +5,7 @@ class QualificationsController < ApplicationController
     @qualifications = search
     respond_to do |format|
       format.html { render index: @qualifications }
-      format.json { render json: @qualifications }
+      format.json { render json: ActiveModel::Serializer::CollectionSerializer.new(@qualifications, serializer: QualificationSerializer).as_json }
     end
   end
 
