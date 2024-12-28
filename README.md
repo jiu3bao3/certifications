@@ -198,7 +198,7 @@ Finished in 31.92 seconds (files took 9.37 seconds to load)
 </details>
 
 ## 環境
-* Ruby: 3.3
+* Ruby: 3.4
 * Rails: 8.0
 * MySQL: 8.0
 
