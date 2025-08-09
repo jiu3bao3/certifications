@@ -31,7 +31,7 @@ class QualificationsController < ApplicationController
       flash.now[:alert] = @qualification.errors.first.full_message
       respond_to do |format|
         format.html { render new: @qualification }
-        format.json { render json: { errors: @qualification.errors.full_messages.as_json }, status: :unprocessable_entity }
+        format.json { render json: { errors: @qualification.errors.full_messages.as_json }, status: :unprocessable_content }
       end
     end
   end
@@ -49,7 +49,7 @@ class QualificationsController < ApplicationController
       flash.now[:alert] = @qualification.errors.first.full_message
       respond_to do |format|
         format.html { render edit: @qualification }
-        format.json { render json: { errors: @qualification.errors.full_messages.as_json }, status: :unprocessable_entity }
+        format.json { render json: { errors: @qualification.errors.full_messages.as_json }, status: :unprocessable_content }
       end
     end
   end

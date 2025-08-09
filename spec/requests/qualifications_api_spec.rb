@@ -28,7 +28,7 @@ RSpec.describe "Qualifications", type: :request do
       let(:params) { { name_ja: "", category_id: category.id } }
       it do
         expect { post(qualifications_path, params: params.to_json, headers:) }.not_to change{ Qualification.count }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         expect(JSON.parse(response.body)["errors"]).to include("資格名を入力してください")
       end
     end
@@ -47,7 +47,7 @@ RSpec.describe "Qualifications", type: :request do
       let(:params) { { classification: :invalid } }
       it do
         expect { patch(qualification_path(qualification), params: params.to_json, headers:) }.not_to change{ Qualification.count }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         expect(JSON.parse(response.body)["errors"]).to include("区分は一覧にありません")
       end
     end
