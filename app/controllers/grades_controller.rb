@@ -1,4 +1,6 @@
 class GradesController < ApplicationController
+  skip_forgery_protection
+
   def new
     @grade = Grade.new(qualification: Qualification.find(params[:qualification_id]))
   end

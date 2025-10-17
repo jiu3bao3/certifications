@@ -37,7 +37,7 @@ const Home = async() => {
               <td>{q.category}</td>
               <td>{q.classification}</td>
               <td>{q.name_ja}</td>
-              <td><Link href={`http://localhost:3000/qualifications/${q.id}`}>参照</Link></td>
+              <td><Link href={`${process.env.NEXT_PUBLIC_URL}/qualifications/${q.id}`}>参照</Link></td>
               <td></td>
               <td></td>
             </tr>
