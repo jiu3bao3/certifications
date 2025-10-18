@@ -55,7 +55,7 @@ const Qualification = async(context) => {
           </div>
           <h2>グレード</h2>
           <div>
-            <Link href={`${process.env.NEXT_PUBLIC_URL}/grades/new`}>グレード作成</Link>
+            <Link href={`${process.env.NEXT_PUBLIC_URL}/qualifications/${qualification.id}/grades/new`}>グレード作成</Link>
           </div>
           <table>
             <thead>
@@ -65,7 +65,6 @@ const Qualification = async(context) => {
                   <th>資格認定機関</th>
                   <th>試験実施機関</th>
                   <th>編集</th>
-                  <th>削除</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,8 +74,7 @@ const Qualification = async(context) => {
                         <td>{g.description}</td>
                         <td>{g.certificater_name}</td>
                         <td>{g.examiner_name}</td>
-                        <td><Link href={`${process.env.NEXT_PUBLIC_URL}/grades/${g.id}/edit`}>編集</Link></td>
-                        <td><button>削除</button></td>
+                        <td><Link href={`${process.env.NEXT_PUBLIC_URL}/qualifications/${qualification.id}/grades/${g.id}/edit`}>編集</Link></td>
                     </tr>
                 )}
             </tbody>

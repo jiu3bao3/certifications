@@ -9,7 +9,6 @@ class GradesController < ApplicationController
     @grade = Grade.new(request_params)
     @grade.qualification_id = params[:qualification_id]
 
-    logger.info(@grade)
     if @grade.save
       respond_to do |format|
         format.html { redirect_to qualification_path(params[:qualification_id]) }
@@ -43,10 +42,18 @@ class GradesController < ApplicationController
   def destroy
     @grade = Grade.find(params[:id])
     if @grade.destroy
-      flash[:notice] = I18n.t('messages.destroyed')
-      redirect_to qualification_path(params[:qualification_id])
+      respond_to do |format|
+        format.html do
+          flash[:notice] = I18n.t('messages.destroyed')
+          redirect_to qualification_path(params[:qualification_id])
+        end
+        format.json { render json: { message: 'success' } }
+      end
     else
-      flash.now[:alert] = @grade.errors.first.full_message
+      respond_to do |format|
+        format.html { flash.now[:alert] = @grade.errors.first.full_message }
+        format.json { render json: @grade.errors.as_json }
+      end
     end
   end
 

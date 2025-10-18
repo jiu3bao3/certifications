@@ -1,19 +1,23 @@
 "use client"
-import { useState } from "react"
 import Link from "next/link"
+import { use, useState } from "react"
+import { useRouter } from "next/navigation"
 
-const Grade = async() => {
-    const [qualificationId, setQualificationId] = useState("")
+const Grade = (context) => {
     const [gradeName, setGradeName] = useState("")
     const [description, setDescription] = useState("")
     const [displayOrder, setDisplayOrder] = useState("")
     const [examinerId, setExaminerId] = useState("")
     const [certificaterId, setCertificaterId] = useState("")
+    const parameter = use(context.params)
+    const qualificationId = parameter.id
+
+    const router = useRouter()
 
     const handleSubmit = async(e) => {
         e.preventDefault()
         try {
-            const response = await fetch("http://localhost:3000/qualifications/10/grades", {
+            const response = await fetch(`http://localhost:3000/qualifications/${qualificationId}/grades`, {
                 method: "POST",
                 headers: {
                     "Accept" : "application/json",
@@ -28,7 +32,8 @@ const Grade = async() => {
                     qualification_id : qualificationId 
                 })
             })
-            console.log(response)
+            router.push(`/qualifications/${qualificationId}`)
+            router.refresh()
         } catch (ex) {
             alert(ex)
             console.error(ex)
@@ -54,11 +59,11 @@ const Grade = async() => {
                         </tr>
                         <tr>
                             <td>資格認定機関</td>
-                            <td><input type="text"/></td>
+                            <td><input value={certificaterId} onChange={(e) => setCertificaterId(e.target.value)} type="text"/></td>
                         </tr>
                         <tr>
                             <td>試験実施機関</td>
-                            <td><input type="text"/></td>
+                            <td><input value={examinerId} onChange={(e) => setExaminerId(e.target.value)} type="text"/></td>
                         </tr>
                         <tr>
                             <td>説明</td>
