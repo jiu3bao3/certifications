@@ -9,11 +9,20 @@ class GradesController < ApplicationController
     @grade = Grade.new(request_params)
     @grade.qualification_id = params[:qualification_id]
 
+    logger.info(@grade)
     if @grade.save
-      redirect_to qualification_path(params[:qualification_id])
+      respond_to do |format|
+        format.html { redirect_to qualification_path(params[:qualification_id]) }
+        format.json { render json: { message: 'success' } }
+      end
     else
-      flash.now[:alert] = @grade.errors.first.full_message
-      render :new
+      respond_to do |format|
+        format.html do
+          flash.now[:alert] = @grade.errors.first.full_message
+          render :new
+        end
+        format.json { render json: @grade.errors.as_json }
+      end
     end
   end
 
