@@ -1,6 +1,13 @@
 class GradesController < ApplicationController
   skip_forgery_protection
 
+  def show
+    @grade = Grade.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @grade.as_json }
+    end
+  end
+
   def new
     @grade = Grade.new(qualification: Qualification.find(params[:qualification_id]))
   end
@@ -32,10 +39,18 @@ class GradesController < ApplicationController
   def update
     @grade = Grade.find(params[:id])
     if @grade.update(request_params)
-      redirect_to qualification_path(params[:qualification_id])
+      respond_to do |format|
+        format.html { redirect_to qualification_path(params[:qualification_id]) }
+        format.json { render json: @grade }
+      end
     else
-      flash.now[:alert] = @grade.errors.first.full_message
-      render :edit
+      respond_to do |format|
+        format.html do 
+          flash.now[:alert] = @grade.errors.first.full_message
+          render :edit
+        end
+        format.json { render json: { message: @grade.errors } }
+      end
     end
   end
 

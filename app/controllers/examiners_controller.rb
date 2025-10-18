@@ -1,6 +1,10 @@
 class ExaminersController < ApplicationController
   def index
     @examiners = Examiner.all
+    respond_to do |format|
+      format.html { render index: @examiners }
+      format.json { render json: @examiners }
+    end
   end
 
   def show

@@ -1,6 +1,10 @@
 class CertificatersController < ApplicationController
   def index
     @certificaters = Certificater.all
+    respond_to do |format|
+      format.html { render index: @certificaters }
+      format.json { render json: @certificaters }
+    end
   end
 
   def show
