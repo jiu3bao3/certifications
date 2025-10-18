@@ -20,7 +20,7 @@
 #  fk_rails_...  (category_id => categories.id)
 #
 class QualificationSerializer < ApplicationSerializer
-  attributes %i[name_ja name_en classification category grades]
+  attributes %i[name_ja name_en classification category grades description]
 
   def classification
     Qualification.human_attribute_name("classification.#{object.classification}")

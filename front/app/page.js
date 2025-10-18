@@ -28,7 +28,6 @@ const Home = async() => {
             <th>資格名</th>
             <th>参照</th>
             <th>編集</th>
-            <th>削除</th>
           </tr>
         </thead>
         <tbody>
@@ -38,8 +37,7 @@ const Home = async() => {
               <td>{q.classification}</td>
               <td>{q.name_ja}</td>
               <td><Link href={`${process.env.NEXT_PUBLIC_URL}/qualifications/${q.id}`}>参照</Link></td>
-              <td></td>
-              <td></td>
+              <td><Link href={`${process.env.NEXT_PUBLIC_URL}/qualifications/${q.id}/edit`}>編集</Link></td>
             </tr>
           )}
         </tbody>

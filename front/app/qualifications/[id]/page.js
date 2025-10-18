@@ -47,7 +47,7 @@ const Qualification = async(context) => {
                     </tr>
                     <tr>
                         <th>説明</th>
-                        <td></td>
+                        <td>{qualification.description}</td>
                     </tr>
                 </tbody>
             </table>

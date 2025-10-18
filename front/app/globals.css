@@ -75,6 +75,7 @@ address
   width: 10em; 
   float:left;
   background-color: blueviolet;
+  margin-right: 2em;
 }
 .menu_title
 {
