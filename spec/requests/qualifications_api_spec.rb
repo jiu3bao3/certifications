@@ -21,7 +21,7 @@ RSpec.describe "Qualifications", type: :request do
     let(:params) { { name_ja: "検定試験", name_en: 'pforiciency test', category_id: category.id, classification: :vendor } }
     it do
       expect { post(qualifications_path, params: params.to_json, headers:) }.to change{ Qualification.count }.by(1)
-      expect(response).to have_http_status(:found)
+      expect(response).to have_http_status(:ok)
     end
 
     context '不正なパラメータ' do
@@ -39,7 +39,7 @@ RSpec.describe "Qualifications", type: :request do
     let(:params) { { name_ja: "新検定試験", classification: :official } }
     it do
       expect { patch(qualification_path(qualification), params: params.to_json, headers:) }.not_to change{ Qualification.count }
-      expect(response).to have_http_status(:found)
+      expect(response).to have_http_status(:ok)
       expect(qualification.reload.name_ja).to eq(params[:name_ja])
     end
 
@@ -57,7 +57,7 @@ RSpec.describe "Qualifications", type: :request do
     let!(:qualification) { create(:qualification, category:) }
     it do
       expect { delete(qualification_path(qualification), params: params.to_json, headers:) }.to change{ Qualification.count }.by(-1)
-      expect(response).to have_http_status(:found)
+      expect(response).to have_http_status(:ok)
     end
 
     context '削除対象が存在しない' do
