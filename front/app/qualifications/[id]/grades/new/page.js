@@ -1,9 +1,11 @@
 "use client"
 import Link from "next/link"
-import { use, useState } from "react"
+import { use, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 
 const Grade = (context) => {
+    const [certificaterList, setCertificaterList] = useState([])
+    const [examinerList, setExaminerList] = useState([])
     const [gradeName, setGradeName] = useState("")
     const [description, setDescription] = useState("")
     const [displayOrder, setDisplayOrder] = useState("")
@@ -13,6 +15,32 @@ const Grade = (context) => {
     const qualificationId = parameter.id
 
     const router = useRouter()
+    useEffect(() => {
+        const getExaminer = async() => {
+            const response = await fetch(`http://localhost:3000/examiners`, {
+                method: "GET",
+                headers: { 
+                    "Accept" : "application/json",
+                    "Content-Type" : "application/json" 
+                }
+            })
+            const json = await response.json()
+            setExaminerList(json)
+        }
+        const getCertificater = async() => {
+            const response = await fetch(`http://localhost:3000/certificaters`, {
+                method: "GET",
+                headers: { 
+                    "Accept" : "application/json",
+                    "Content-Type" : "application/json" 
+                }
+            })
+            const json = await response.json()
+            setCertificaterList(json)
+        }
+        getExaminer()
+        getCertificater()
+    }, [context])
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -44,7 +72,7 @@ const Grade = (context) => {
         <div>
             <h1></h1>
             <div>
-                <Link href="">資格詳細</Link>
+                <Link href={`http://localhost:4000/qualifications/${qualificationId}`}>資格詳細</Link>
             </div>
             <form onSubmit={handleSubmit}>
                 <table>
@@ -59,11 +87,23 @@ const Grade = (context) => {
                         </tr>
                         <tr>
                             <td>資格認定機関</td>
-                            <td><input value={certificaterId} onChange={(e) => setCertificaterId(e.target.value)} type="text"/></td>
+                            <td>
+                                <select name="certificaterId" value={certificaterId} onChange={(e) => setCertificaterId(e.target.value)}>
+                                    {certificaterList.map((q) => 
+                                        <option key={q.id} value={q.id}>{q.name_ja}</option>
+                                    )}
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>試験実施機関</td>
-                            <td><input value={examinerId} onChange={(e) => setExaminerId(e.target.value)} type="text"/></td>
+                            <td>
+                                <select name="examinerId" value={examinerId} onChange={(e) => setExaminerId(e.target.value)}>
+                                    {examinerList.map((e) =>
+                                        <option key={e.id} value={e.id}>{e.name}</option>
+                                    )}
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>説明</td>
@@ -76,7 +116,7 @@ const Grade = (context) => {
                 </div>
             </form>
             <div>
-                <Link href="">資格詳細</Link>
+                <Link href={`http://localhost:4000/qualifications/${qualificationId}`}>資格詳細</Link>
             </div>
         </div>
     )
