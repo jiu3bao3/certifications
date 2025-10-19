@@ -20,6 +20,9 @@ const Home = async() => {
     <div>
       <h1>資格</h1>
       <hr/>
+      <div>
+        <Link href={`${process.env.NEXT_PUBLIC_URL}/qualifications/new/`}>新規登録</Link>
+      </div>
       <table>
         <thead>
           <tr>
@@ -42,6 +45,9 @@ const Home = async() => {
           )}
         </tbody>
       </table>
+      <div>
+        <Link href={`${process.env.NEXT_PUBLIC_URL}/qualifications/new/`}>新規登録</Link>
+      </div>
     </div>
   )
 }

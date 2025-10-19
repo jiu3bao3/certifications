@@ -3,7 +3,7 @@ import Link from "next/link"
 import { use, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 
-const EditQualification = (context) => {
+const New = (context) => {
     const [categoryList, setCategoryList] = useState([])
     const [categoryId, setCategoryId] = useState("")
     const [nameJa, setNameJa] = useState("")
@@ -11,55 +11,7 @@ const EditQualification = (context) => {
     const [classification, setClassification] = useState("")
     const [description, setDescription] = useState("")
 
-    const parameter = use(context.params)
     const router = useRouter()
-
-    const handleSubmit = async(e) => {
-        e.preventDefault()
-        try {
-            if (e.nativeEvent.submitter.name === 'delete') {
-                const response = await fetch(`http://localhost:3000/qualifications/${parameter.id}`, {
-                    method: "DELETE",
-                    headers: {
-                        "Accept" : "application/json",
-                        "Content-Type" : "application/json"
-                    }
-                })
-                const json = await response.json()
-                if (response.ok) {
-                    alert(json.message)
-                    router.push(`/`)
-                    router.refresh()
-                } else {
-                    alert(json.errors.join("\n"))
-                }
-            } else if (e.nativeEvent.submitter.name === 'update') {
-                const response = await fetch(`http://localhost:3000/qualifications/${parameter.id}`, {
-                    method: "PATCH",
-                    headers: {
-                        "Accept" : "application/json",
-                        "Content-Type" : "application/json"
-                    },
-                    body: JSON.stringify({
-                        name_ja: nameJa,
-                        name_en: nameEn,
-                        category_id: categoryId,
-                        classification: classification,
-                        description: description
-                    })
-                })
-                const json = await response.json()
-                if (response.ok) {
-                    router.push(`/`)
-                    router.refresh()
-                } else {
-                    alert(json.errors.join("\n"))
-                }
-            }
-        } catch (e) {
-            alert(e)
-        }
-    }
 
     useEffect(() => {
         const getCategoryList = async() => {
@@ -73,24 +25,37 @@ const EditQualification = (context) => {
             const json = await response.json()
             setCategoryList(json)
         }
-        const getQualification = async(qualificationId) => {
-            const response = await fetch(`http://localhost:3000/qualifications/${qualificationId}`, {
-                method: "GET",
-                headers: { 
+        getCategoryList()
+    }, [context])
+
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+        try {
+            const response = await fetch(`http://localhost:3000/qualifications`, {
+                method: "POST",
+                headers: {
                     "Accept" : "application/json",
-                    "Content-Type" : "application/json" 
-                }
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({
+                    name_ja: nameJa,
+                    name_en: nameEn,
+                    category_id: categoryId,
+                    classification: classification,
+                    description: description
+                })
             })
             const json = await response.json()
-            setNameJa(json.name_ja)
-            setNameEn(json.name_en)
-            setClassification(json.classification_id)
-            setCategoryId(json.category_id)
-            setDescription(json.description)
+            if (response.ok) {
+                router.push(`/`)
+                router.refresh()
+            } else {
+                alert(json.errors.join("\n"))
+            }
+        } catch (e) {
+            alert(e)
         }
-        getCategoryList()
-        getQualification(parameter.id)
-    }, [context])
+    }
 
     return(
         <div>
@@ -140,12 +105,12 @@ const EditQualification = (context) => {
                     </tbody>
                 </table>
                 <div>
-                    <button name="update" className="submit_button">更新</button>
-                    <button name="delete" className="submit_button">削除</button>
+                    <button className="submit_button">保存</button>
                 </div>
             </form>
             <Link href={`${process.env.NEXT_PUBLIC_URL}`}>一覧</Link>
         </div>
     )
 }
-export default EditQualification
+
+export default New

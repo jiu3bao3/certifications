@@ -26,7 +26,10 @@ class QualificationsController < ApplicationController
 
     if @qualification.save
       flash[:notice] = I18n.t('messages.registered')
-      redirect_to edit_qualification_path(@qualification)
+      respond_to do |format|
+        format.html { redirect_to edit_qualification_path(@qualification) }
+        format.json { render json: @qualification }
+      end
     else
       flash.now[:alert] = @qualification.errors.first.full_message
       respond_to do |format|
@@ -44,7 +47,10 @@ class QualificationsController < ApplicationController
     @qualification = Qualification.find(params[:id])
     if @qualification.update(request_params)
       flash[:notice] = I18n.t('messages.updated')
-      redirect_to edit_qualification_path(@qualification)
+      respond_to do |format|
+        format.html { redirect_to edit_qualification_path(@qualification) }
+        format.json { render json: @qualification }
+      end
     else
       flash.now[:alert] = @qualification.errors.first.full_message
       respond_to do |format|
@@ -56,9 +62,11 @@ class QualificationsController < ApplicationController
 
   def destroy
     Qualification.destroy(params[:id])
-
     flash[:notice] = I18n.t('messages.destroyed')
-    redirect_to qualifications_path
+    respond_to do |format|
+      format.html { redirect_to qualifications_path }
+      format.json { render json: { message: 'success' } }
+    end
   end
 
   private
