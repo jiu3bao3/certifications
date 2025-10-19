@@ -1,6 +1,4 @@
 class GradesController < ApplicationController
-  skip_forgery_protection
-
   def show
     @grade = Grade.find(params[:id])
     respond_to do |format|

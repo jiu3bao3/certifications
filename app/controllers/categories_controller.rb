@@ -9,6 +9,10 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    respond_to do |format|
+      format.html { render index: @category }
+      format.json { render json: @category }
+    end
   end
 
   def new
@@ -19,10 +23,16 @@ class CategoriesController < ApplicationController
     @category = Category.new(request_params)
 
     if @category.save
-      redirect_to categories_path
+      respond_to do |format|
+        format.html { redirect_to categories_path }
+        format.json { render json: @category }
+      end
     else
       flash.now[:alert] =  @category.errors.first.full_message
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.json { render json: @category.errors }
+      end
     end
   end
 
@@ -34,10 +44,16 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     if @category.update(request_params)
       flash[:notice] = I18n.t('messages.updated')
-      redirect_to categories_path
+      respond_to do |format|
+        format.html { redirect_to categories_path }
+        format.json { render json: @category }
+      end
     else
       flash.now[:alert] =  @category.errors.first.full_message
-      render :edit
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: { message: @category.errors } }
+      end
     end
   end
 
@@ -45,9 +61,15 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     if @category.destroy
       flash[:notice] = I18n.t('messages.destroyed')
-      redirect_to categories_path
+      respond_to do |format|
+        format.html { redirect_to categories_path }
+        format.json { render json: { message: I18n.t('messages.destroyed') } }
+      end
     else
-      flash.now[:alert] =  @category.errors.first.full_message
+      respond_to do |format|
+        format.html { flash.now[:alert] =  @category.errors.first.full_message }
+        format.json { render json: { message: @category.errors }}
+      end
     end
   end
 

@@ -1,6 +1,4 @@
 class QualificationsController < ApplicationController
-  protect_from_forgery with: :null_session
-
   def index
     @qualifications = search
     respond_to do |format|
