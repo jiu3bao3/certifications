@@ -4,6 +4,7 @@ import { use, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 
 const New = (context) => {
+    const [classificationList, setClassificationList] = useState([])
     const [categoryList, setCategoryList] = useState([])
     const [categoryId, setCategoryId] = useState("")
     const [nameJa, setNameJa] = useState("")
@@ -26,6 +27,7 @@ const New = (context) => {
             setCategoryList(json)
         }
         getCategoryList()
+        setClassificationList([{key: '', value: ''},{key: 'national', value: '国家資格'},{ key: 'official', value: '公的資格'}, {key: 'vendor', value: '私的資格'}])
     }, [context])
 
     const handleSubmit = async(e) => {
@@ -82,9 +84,9 @@ const New = (context) => {
                             <td>区分</td>
                             <td>
                                 <select name="classification" value={classification} onChange={(e) => setClassification(e.target.value)}>
-                                    <option value="national">国家資格</option>
-                                    <option value="official">公的資格</option>
-                                    <option value="vendor">私的資格</option>
+                                    {classificationList.map(c =>
+                                        <option key={c.key} value={c.key}>{c.value}</option>
+                                    )}
                                 </select>
                             </td>
                         </tr>
