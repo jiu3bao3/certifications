@@ -9,6 +9,10 @@ class CertificatersController < ApplicationController
 
   def show
     @certificater = Certificater.find(params[:id])
+    respond_to do |format|
+      format.html { render show: @certificater }
+      format.json { render json: @certificater }
+    end
   end
 
   def new
@@ -33,10 +37,16 @@ class CertificatersController < ApplicationController
     @certificater = Certificater.find(params[:id])
     if @certificater.update(request_params)
       flash[:notice] = I18n.t('messages.updated')
-      redirect_to certificaters_path
+      respond_to do |format|
+        format.html { redirect_to certificaters_path }
+        format.json { render json: @certificater }
+      end
     else
       flash.now[:alert] = @certificater.errors.first.full_message
-      render :edit
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: { message: @certificater.errors } }
+      end
     end
   end
 
