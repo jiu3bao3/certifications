@@ -45,7 +45,7 @@ class CertificatersController < ApplicationController
       flash.now[:alert] = @certificater.errors.first.full_message
       respond_to do |format|
         format.html { render :edit }
-        format.json { render json: { message: @certificater.errors } }
+        format.json { render json: { message: @certificater.errors }, status: :unprocessable_content }
       end
     end
   end
@@ -54,9 +54,15 @@ class CertificatersController < ApplicationController
     @certificater = Certificater.find(params[:id])
     if @certificater.destroy
       flash[:notice] = I18n.t('messages.destroyed')
-      redirect_to certificaters_path
+      respond_to do |format|
+        format.html { redirect_to certificaters_path }
+        format.json { render json: { message: 'success' } }
+      end
     else
-      flash.now[:alert] = @certificater.errors.first.full_message
+      respond_to do |format|
+        format.html { flash.now[:alert] = @certificater.errors.first.full_message }
+        format.json { render json: { message: @certificater.errors }, status: :unprocessable_content }
+      end
     end
   end
 

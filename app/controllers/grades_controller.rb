@@ -25,7 +25,7 @@ class GradesController < ApplicationController
           flash.now[:alert] = @grade.errors.first.full_message
           render :new
         end
-        format.json { render json: @grade.errors.as_json }
+        format.json { render json: { message: @grade.errors }, status: :unprocessable_content }
       end
     end
   end
@@ -47,7 +47,7 @@ class GradesController < ApplicationController
           flash.now[:alert] = @grade.errors.first.full_message
           render :edit
         end
-        format.json { render json: { message: @grade.errors } }
+        format.json { render json: { message: @grade.errors }, status: :unprocessable_content }
       end
     end
   end

@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
       flash.now[:alert] =  @category.errors.first.full_message
       respond_to do |format|
         format.html { render :new }
-        format.json { render json: @category.errors }
+        format.json { render json: { message: @category.errors }, status: :unprocessable_content }
       end
     end
   end
@@ -52,7 +52,7 @@ class CategoriesController < ApplicationController
       flash.now[:alert] =  @category.errors.first.full_message
       respond_to do |format|
         format.html { render :edit }
-        format.json { render json: { message: @category.errors } }
+        format.json { render json: { message: @category.errors }, status: :unprocessable_content }
       end
     end
   end
@@ -68,7 +68,7 @@ class CategoriesController < ApplicationController
     else
       respond_to do |format|
         format.html { flash.now[:alert] =  @category.errors.first.full_message }
-        format.json { render json: { message: @category.errors }}
+        format.json { render json: { message: @category.errors }, status: :unprocessable_content }
       end
     end
   end
