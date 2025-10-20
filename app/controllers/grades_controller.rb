@@ -17,14 +17,12 @@ class GradesController < ApplicationController
     if @grade.save
       respond_to do |format|
         format.html { redirect_to qualification_path(params[:qualification_id]) }
-        format.json { render json: { message: 'success' } }
+        format.json { render json: @grade }
       end
     else
+      flash.now[:alert] = @grade.errors.first.full_message
       respond_to do |format|
-        format.html do
-          flash.now[:alert] = @grade.errors.first.full_message
-          render :new
-        end
+        format.html { render :new }
         format.json { render json: { message: @grade.errors }, status: :unprocessable_content }
       end
     end

@@ -22,10 +22,16 @@ class CertificatersController < ApplicationController
   def create
     @certificater = Certificater.new(request_params)
     if @certificater.save
-      redirect_to certificaters_path
+      respond_to do |format|
+        format.html { redirect_to certificaters_path }
+        format.json { render json: @certificater }
+      end
     else
       flash.now[:alert] = @certificater.errors.first.full_message
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.json { render json: @certificater.errors }
+      end
     end
   end
 
