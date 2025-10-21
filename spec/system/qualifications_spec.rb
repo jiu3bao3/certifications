@@ -36,6 +36,23 @@ RSpec.describe "Qualifications", type: :system, js: true do
       expect(page.current_path).to match("\/qualifications\/\\d+\/edit")
     end
 
+  end
+
+  describe 'POST qualifications' do
+    let(:form_data) { { name_ja: '資格名', name_en: 'QUALIFICATION', description: 'TEST' } }
+
+    before { visit new_qualification_path }
+    it '資格情報を登録できること' do
+      form_data.each { |k,v| page.fill_in("qualification_#{k}", with: v) }
+      page.select('公的資格', from: '区分')
+      page.select(category.name_ja, from: 'Category')
+      page.all(:xpath, '//input[@type="submit"]')[0].click
+      expect(Qualification.count).to eq(initial_record + 1)
+    end
+  end
+
+  describe 'DELETE qualification' do
+    before { visit qualifications_path }
     it '削除ボタンで資格情報が削除されること' do
       page.find('button', text: '削除', match: :first).click
       page.accept_confirm "削除してよろしいですか？"
