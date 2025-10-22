@@ -49,6 +49,42 @@ RSpec.describe "Qualifications", type: :system, js: true do
       page.all(:xpath, '//input[@type="submit"]')[0].click
       expect(Qualification.count).to eq(initial_record + 1)
     end
+
+    context '資格名がブランク' do
+      let(:form_data) { { name_ja: nil, name_en: 'QUALIFICATION', description: 'TEST' } }
+      it '登録できないこと' do
+        form_data.each { |k,v| page.fill_in("qualification_#{k}", with: v) }
+        page.all(:xpath, '//input[@type="submit"]')[0].click
+        expect(page.all(:xpath, '//div[@class="alert"]').first.text).to match(/資格名を入力してください/)
+        expect(Qualification.count).to eq(initial_record)
+      end
+    end
+  end
+
+  describe 'PATCH qualification' do
+    let(:form_data) { { name_ja: '資格名更新', name_en: 'UPDATED', description: 'TEST UPDATED' } }
+    let(:target) { qualifications.first }
+
+    before { visit edit_qualification_path(target.id) }
+    it '資格情報を登録できること' do
+      form_data.each { |k,v| page.fill_in("qualification_#{k}", with: v) }
+      page.select('私的資格', from: '区分')
+      page.select(category.name_ja, from: 'Category')
+      page.all(:xpath, '//input[@type="submit"]')[0].click
+      expect(Qualification.count).to eq(initial_record)
+      target.reload
+      form_data.each { |k, _v| expect(target.attributes[k.to_s]).to eq(form_data[k])}
+    end
+
+    context '資格名がブランク' do
+      let(:form_data) { { name_ja: nil, name_en: 'QUALIFICATION', description: 'TEST' } }
+      it '登録できないこと' do
+        form_data.each { |k,v| page.fill_in("qualification_#{k}", with: v) }
+        page.all(:xpath, '//input[@type="submit"]')[0].click
+        expect(page.all(:xpath, '//div[@class="alert"]').first.text).to match(/資格名を入力してください/)
+        expect(Qualification.count).to eq(initial_record)
+      end
+    end
   end
 
   describe 'DELETE qualification' do
