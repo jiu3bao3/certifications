@@ -73,7 +73,7 @@ class QualificationsController < ApplicationController
     query = Qualification.includes(:category)
     query = query.where("name_ja LIKE ?", "%#{search_params[:qualification_name]}%") if search_params[:qualification_name].present?
     if search_params.key?(:classifications)
-      selected_classifications = search_params[:classifications].select { |k, v| v == '1' }
+      selected_classifications = search_params[:classifications].select { |k, v| v == '1' || v == 'on' }
       query = query.where(classification: selected_classifications.keys)
     end
     query = query.where(category_id: search_params[:category_id]) if search_params[:category_id].present?
