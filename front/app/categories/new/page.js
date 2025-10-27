@@ -52,15 +52,15 @@ const NewCategory = (context) => {
                     <tbody>
                         <tr>
                             <td>カテゴリー名</td>
-                            <td><input name="nameJa" value={nameJa} onChange={(e) => setNameJa(e.target.value)} type="text" /></td>
+                            <td><input name="nameJa" value={nameJa} onChange={(e) => setNameJa(e.target.value)} type="text" className="text_field" /></td>
                         </tr>
                         <tr>
                             <td>カテゴリー名（英語）</td>
-                            <td><input name="nameEn" value={nameEn} onChange={(e) => setNameEn(e.target.value)} type="text"/></td>
+                            <td><input name="nameEn" value={nameEn} onChange={(e) => setNameEn(e.target.value)} type="text" className="text_field" /></td>
                         </tr>
                         <tr>
                             <td>説明</td>
-                            <td><textarea name="description" value={description} onChange={(e) => setDescription(e.target.value)} rows="4" cols="80"></textarea></td>
+                            <td><textarea name="description" value={description} onChange={(e) => setDescription(e.target.value)} className="text_area"></textarea></td>
                         </tr>
                     </tbody>
                 </table>

@@ -75,15 +75,15 @@ const Certificater = (context) => {
                     <tbody>
                         <tr>
                             <td>資格認定機関名</td>
-                            <td><input name="nameJa" value={nameJa} onChange={(e) => setNameJa(e.target.value)} type="text"/></td>
+                            <td><input name="nameJa" value={nameJa} onChange={(e) => setNameJa(e.target.value)} type="text" className="text_field" /></td>
                         </tr>
                         <tr>
                             <td>資格認定機関名（英語）</td>
-                            <td><input name="nameEn" value={nameEn} onChange={(e) => setNameEn(e.target.value)} type="text"/></td>
+                            <td><input name="nameEn" value={nameEn} onChange={(e) => setNameEn(e.target.value)} type="text" className="text_field" /></td>
                         </tr>
                         <tr>
                             <td>説明</td>
-                            <td><textarea name="description" value={description} onChange={(e) => setDescription(e.target.value)} row="4" cols="80"></textarea></td>
+                            <td><textarea name="description" value={description} onChange={(e) => setDescription(e.target.value)} className="text_area" ></textarea></td>
                         </tr>
                     </tbody>
                 </table>

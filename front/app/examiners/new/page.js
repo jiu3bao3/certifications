@@ -59,26 +59,26 @@ const NewExaminer = (context) => {
                     <tbody>
                         <tr>
                             <td>試験実施機関名</td>
-                            <td><input name="name" value={name} onChange={(e) => setName(e.target.value)} type="text"/></td>
+                            <td><input name="name" value={name} onChange={(e) => setName(e.target.value)} type="text" className="text_field"/></td>
                         </tr>
                         <tr>
                             <td>法人番号</td>
-                            <td><input name="corporateNumber" value={corporateNumber} onChange={(e) => setCorporateNumber(e.target.value)} type="text"/></td>
+                            <td><input name="corporateNumber" value={corporateNumber} onChange={(e) => setCorporateNumber(e.target.value)} type="text" className="text_field" /></td>
                         </tr>
                         <tr>
                             <td>所在地</td>
                             <td>
                                 〒<input name="zipcode" value={zipcode} onChange={(e) => setZipcode(e.target.value)} type="text"/><br/>
-                                <input name="address" value={address} onChange={(e) => setAddress(e.target.value)} type="text"/>
+                                <input name="address" value={address} onChange={(e) => setAddress(e.target.value)} type="text" className="text_field"/>
                             </td>
                         </tr>
                         <tr>
                             <td>電話番号</td>
-                            <td><input name="tel" value={tel} onChange={(e) => setTel(e.target.value)} type="text"/></td>
+                            <td><input name="tel" value={tel} onChange={(e) => setTel(e.target.value)} type="text" className="text_field" /></td>
                         </tr>
                         <tr>
                             <td>URL</td>
-                            <td><input name="url" value={url} onChange={(e) => setUrl(e.target.value)} type="text"/></td>
+                            <td><input name="url" value={url} onChange={(e) => setUrl(e.target.value)} type="text" className="text_field" /></td>
                         </tr>
                     </tbody>
                 </table>
