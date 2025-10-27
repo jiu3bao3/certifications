@@ -4,13 +4,20 @@ import { useSearchParams } from 'next/navigation';
 import { use, useState, useEffect } from "react"
 
 const Home = (context) => {
-  const classificationMap = { national: '国家資格', official: '公的資格', private: '私的資格' }
+  const options = { national: '国家資格', official: '公的資格', private: '私的資格' }
   const [categories, setCategories] = useState([])
   const [qualifications, setQualifications] = useState([])
   const [qualificationName, setQualificationName] = useState("")
   const [categoryId, setCategoryId] = useState("")
+  const [selected, setSelected] = useState([])
 
   const searchParams = useSearchParams();
+
+  const toggleOption = (option) => {
+    setSelected((prev) =>
+      prev.includes(option) ? prev.filter((item) => item !== option) : [...prev, option]
+    )
+  };
 
   useEffect(() => {
     const getCategories = async() => {
@@ -40,9 +47,19 @@ const Home = (context) => {
         }
       })
       const json = await response.json()
+      const qualification_name = searchParams.get('qualification_name') || '';
+      const category_id = searchParams.get('category_id') || '';
+      const selectedClassifications = []
       setQualifications(json)
-      setQualificationName(searchParams.get('qualification_name') || '')
-      setCategoryId(searchParams.get('category_id') || '')
+      setQualificationName(qualification_name)
+      setCategoryId(category_id)
+      Object.entries(options).forEach(([k, _v]) => {
+        const selected = searchParams.get(`classifications[${k}]`) || ''
+        if(selected) {
+          selectedClassifications.push(k)
+        }
+      })
+      setSelected(selectedClassifications)
     }
     getCategories()
     getQualifications(searchParams)
@@ -62,9 +79,11 @@ const Home = (context) => {
                 <tr>
                     <th className="borderless">区分</th>
                     <td className="borderless">
-                      <label><input name="classifications[national]" type="checkbox" /></label>国家資格
-                      <label><input name="classifications[official]" type="checkbox" /></label>公的資格
-                      <label><input name="classifications[private]" type="checkbox" /></label>私的資格
+                      {Object.entries(options).map(([key, value]) => (
+                        <label key={key} style={{ display: 'block' }}>
+                          <input type="checkbox" name={`classifications[${key}]`} checked={selected.includes(key)} onChange={() => toggleOption(key)} />{value}
+                        </label>
+                      ))}
                     </td>
                 </tr>
                 <tr>
