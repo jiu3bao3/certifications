@@ -68,4 +68,8 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   config.web_console.permissions = '172.18.0.0/16'
+
+  config.hosts << "front"
+  config.hosts << "app"
+  config.hosts << "localhost"
 end
