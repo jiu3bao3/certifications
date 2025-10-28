@@ -73,7 +73,7 @@ const Examiner = (context) => {
         <div>
             <h1>試験実施機関</h1>
             <div>
-                <Link href={`http://localhost:4000/examiners`}>一覧</Link>
+                <Link href={`/examiners`}>一覧</Link>
             </div>
             <form onSubmit={handleSubmit}>
                 <table>
@@ -115,7 +115,7 @@ const Examiner = (context) => {
                 </div>
             </form>
             <div>
-                <Link href={`http://localhost:4000/examiners`}>一覧</Link>
+                <Link href={`/examiners`}>一覧</Link>
             </div>
         </div>
     )

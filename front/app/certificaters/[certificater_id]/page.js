@@ -63,7 +63,7 @@ const Certificater = (context) => {
     return(
         <div>
             <h1>資格認定機関</h1>
-            <div><Link href={`http://localhost:4000/certificaters`}>一覧</Link></div>
+            <div><Link href={`/certificaters`}>一覧</Link></div>
             <form onSubmit={handleSubmit}>
                 <table>
                     <thead>
@@ -92,7 +92,7 @@ const Certificater = (context) => {
                     <button name="delete" className="submit_button">削除</button>
                 </div>
             </form>
-            <div><Link href={`http://localhost:4000/certificaters`}>一覧</Link></div>
+            <div><Link href={`/certificaters`}>一覧</Link></div>
         </div>
     )
 }

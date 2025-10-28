@@ -17,7 +17,7 @@ const Categories = async() => {
         <div>
             <h1>カテゴリー</h1>
             <div>
-                <Link href={`${process.env.NEXT_PUBLIC_URL}/categories/new/`}>新規登録</Link>
+                <Link href={`/categories/new/`}>新規登録</Link>
             </div>
             <table>
                 <thead>
@@ -36,13 +36,13 @@ const Categories = async() => {
                             <td>{c.name_ja}</td>
                             <td>{c.name_en}</td>
                             <td>{c.qualifications_count}</td>
-                            <td><Link href={`http://localhost:4000/categories/${c.id}`}>編集</Link></td>
+                            <td><Link href={`/categories/${c.id}`}>編集</Link></td>
                         </tr>
                     )}
                 </tbody>
             </table>
             <div>
-                <Link href={`${process.env.NEXT_PUBLIC_URL}/categories/new/`}>新規登録</Link>
+                <Link href={`/categories/new/`}>新規登録</Link>
             </div>
         </div>
     )

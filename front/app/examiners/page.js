@@ -18,7 +18,7 @@ const Examiners = async() => {
         <div>
             <h1>試験実施機関</h1>
             <div>
-                <Link href={`http://localhost:4000/examiners/new/`}>新規作成</Link>
+                <Link href={`/examiners/new/`}>新規作成</Link>
             </div>
             <table>
                 <thead>
@@ -35,13 +35,13 @@ const Examiners = async() => {
                             <td>{e.id}</td>
                             <td>{e.name}</td>
                             <td>{e.address}</td>
-                            <td><Link href={`http://localhost:4000/examiners/${e.id}`}>編集</Link></td>
+                            <td><Link href={`/examiners/${e.id}`}>編集</Link></td>
                         </tr>
                     )}
                 </tbody>
             </table>
             <div>
-                <Link href={`http://localhost:4000/examiners/new/`}>新規作成</Link>
+                <Link href={`/examiners/new/`}>新規作成</Link>
             </div>
         </div>
     )

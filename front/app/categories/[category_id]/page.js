@@ -71,7 +71,7 @@ const Category = (context) => {
     return(
         <div>
             <h1>カテゴリー</h1>
-            <div><Link href={`http://localhost:4000/categories`}>一覧</Link></div>
+            <div><Link href={`/categories`}>一覧</Link></div>
             <form onSubmit={handleSubmit} >
                 <table>
                     <thead>
@@ -100,7 +100,7 @@ const Category = (context) => {
                     <button name="delete" className="submit_button">削除</button>
                 </div>
             </form>
-            <div><Link href={`http://localhost:4000/categories`}>一覧</Link></div>
+            <div><Link href={`/categories`}>一覧</Link></div>
         </div>
     )
 }

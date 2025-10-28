@@ -40,7 +40,7 @@ const NewCategory = (context) => {
     return(
         <div>
             <h1>カテゴリー</h1>
-            <div><Link href={`http://localhost:4000/categories`}>一覧</Link></div>
+            <div><Link href={`/categories`}>一覧</Link></div>
             <form onSubmit={handleSubmit} >
                 <table>
                     <thead>
@@ -68,7 +68,7 @@ const NewCategory = (context) => {
                     <button name="save" className="submit_button">保存</button>
                 </div>
             </form>
-            <div><Link href={`http://localhost:4000/categories`}>一覧</Link></div>
+            <div><Link href={`/categories`}>一覧</Link></div>
         </div>
     )
 }

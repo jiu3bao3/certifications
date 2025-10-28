@@ -72,7 +72,7 @@ const Grade = (context) => {
         <div>
             <h1></h1>
             <div>
-                <Link href={`http://localhost:4000/qualifications/${qualificationId}`}>資格詳細</Link>
+                <Link href={`/qualifications/${qualificationId}`}>資格詳細</Link>
             </div>
             <form onSubmit={handleSubmit}>
                 <table>
@@ -116,7 +116,7 @@ const Grade = (context) => {
                 </div>
             </form>
             <div>
-                <Link href={`http://localhost:4000/qualifications/${qualificationId}`}>資格詳細</Link>
+                <Link href={`/qualifications/${qualificationId}`}>資格詳細</Link>
             </div>
         </div>
     )
