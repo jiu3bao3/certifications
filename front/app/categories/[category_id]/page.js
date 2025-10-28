@@ -13,7 +13,7 @@ const Category = (context) => {
 
     useEffect(() => {
         const getCategory = async(id) => {
-            const response = await fetch(`http://localhost:3000/categories/${id}}`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/categories/${id}}`, {
                 method: "GET",
                 headers: { 
                     "Accept" : "application/json",
@@ -21,18 +21,18 @@ const Category = (context) => {
                 }
             })
             const json = await response.json()
-            setNameJa(json.name_ja)
-            setNameEn(json.name_en)
-            setDescription(json.description)
+            setNameJa(json.name_ja || '')
+            setNameEn(json.name_en || '')
+            setDescription(json.description || '')
         }
-        getCategory(parameter.category_id)
+        getCategory(parameter.category_id  || '')
     }, [context])
 
     const handleSubmit = async(e) => {
         e.preventDefault()
         try {
             if (e.nativeEvent.submitter.name === 'delete') {
-                const response = await fetch(`http://localhost:3000/categories/${parameter.category_id}`, {
+                const response = await fetch(`${process.env.PUBLIC_API_URL}/categories/${parameter.category_id}`, {
                     method: "DELETE",
                     headers: {
                         "Accept" : "application/json",
@@ -44,7 +44,7 @@ const Category = (context) => {
                     alert(json.errors.join("\n"))
                 }
             } else if (e.nativeEvent.submitter.name === 'update') {
-                const response = await fetch(`http://localhost:3000/categories/${parameter.category_id}`, {
+                const response = await fetch(`${process.env.PUBLIC_API_URL}/categories/${parameter.category_id}`, {
                     method: "PATCH",
                     headers: {
                         "Accept" : "application/json",

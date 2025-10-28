@@ -13,7 +13,7 @@ const Certificater = (context) => {
 
     useEffect(() => {
         const getCertificater = async(id) => {
-            const response = await fetch(`http://localhost:3000/certificaters/${id}}`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/certificaters/${id}}`, {
                 method: "GET",
                 headers: { 
                     "Accept" : "application/json",
@@ -31,7 +31,7 @@ const Certificater = (context) => {
     const handleSubmit = async(e) => {
         e.preventDefault()
         if (e.nativeEvent.submitter.name === 'delete') {
-            const response = await fetch(`http://localhost:3000/certificaters/${parameter.certificater_id}`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/certificaters/${parameter.certificater_id}`, {
                 method: "DELETE",
                 headers: {
                     "Accept" : "application/json",
@@ -39,7 +39,7 @@ const Certificater = (context) => {
                 }
             })
         } else if (e.nativeEvent.submitter.name === 'update') {
-            const response = await fetch(`http://localhost:3000/certificaters/${parameter.certificater_id}`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/certificaters/${parameter.certificater_id}`, {
                 method: "PATCH",
                 headers: {
                     "Accept" : "application/json",

@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default nextConfig;
+// next.config.mjs
+export default {
+  env: {
+    API_BASE_URL: "http://app:3000",
+    PUBLIC_API_URL: "http://localhost:3000",
+  },
+}

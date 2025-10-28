@@ -16,7 +16,7 @@ const New = (context) => {
 
     useEffect(() => {
         const getCategoryList = async() => {
-            const response = await fetch(`http://localhost:3000/categories`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/categories`, {
                 method: "GET",
                 headers: { 
                     "Accept" : "application/json",
@@ -33,7 +33,7 @@ const New = (context) => {
     const handleSubmit = async(e) => {
         e.preventDefault()
         try {
-            const response = await fetch(`http://localhost:3000/qualifications`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/qualifications`, {
                 method: "POST",
                 headers: {
                     "Accept" : "application/json",

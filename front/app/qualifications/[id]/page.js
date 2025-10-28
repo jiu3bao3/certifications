@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const getQualification = async(id) => {
-    const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/qualifications/${id}`, {
+    const response = await fetch(`${process.env.API_BASE_URL}/qualifications/${id}`, {
         method: "GET",
         headers : {
             "Accept": "application/json",

@@ -18,7 +18,8 @@ services:
     volumes:
       - .:/app
   front:
-    build: ./front
+    build: 
+      context: ./front
     depends_on:
       - app
     ports:

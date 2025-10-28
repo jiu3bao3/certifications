@@ -6,6 +6,7 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
+COPY .env.local .env.local
 
 EXPOSE 3000
 

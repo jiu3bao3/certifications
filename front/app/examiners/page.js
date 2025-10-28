@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const getExaminers = async() => {
-    const response = await fetch(`http://localhost:3000/examiners`, {
+    const response = await fetch(`${process.env.API_BASE_URL}/examiners`, {
     method: "GET",
     headers : {
       "Accept": "application/json",

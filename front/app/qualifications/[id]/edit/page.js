@@ -18,7 +18,7 @@ const EditQualification = (context) => {
         e.preventDefault()
         try {
             if (e.nativeEvent.submitter.name === 'delete') {
-                const response = await fetch(`http://localhost:3000/qualifications/${parameter.id}`, {
+                const response = await fetch(`${process.env.PUBLIC_API_URL}/qualifications/${parameter.id}`, {
                     method: "DELETE",
                     headers: {
                         "Accept" : "application/json",
@@ -34,7 +34,7 @@ const EditQualification = (context) => {
                     alert(json.errors.join("\n"))
                 }
             } else if (e.nativeEvent.submitter.name === 'update') {
-                const response = await fetch(`http://localhost:3000/qualifications/${parameter.id}`, {
+                const response = await fetch(`${process.env.PUBLIC_API_URL}/qualifications/${parameter.id}`, {
                     method: "PATCH",
                     headers: {
                         "Accept" : "application/json",
@@ -63,7 +63,7 @@ const EditQualification = (context) => {
 
     useEffect(() => {
         const getCategoryList = async() => {
-            const response = await fetch(`http://localhost:3000/categories`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/categories`, {
                 method: "GET",
                 headers: { 
                     "Accept" : "application/json",
@@ -74,7 +74,7 @@ const EditQualification = (context) => {
             setCategoryList(json)
         }
         const getQualification = async(qualificationId) => {
-            const response = await fetch(`http://localhost:3000/qualifications/${qualificationId}`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/qualifications/${qualificationId}`, {
                 method: "GET",
                 headers: { 
                     "Accept" : "application/json",

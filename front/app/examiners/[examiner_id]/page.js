@@ -16,7 +16,7 @@ const Examiner = (context) => {
 
     useEffect(() => {
         const getExaminer = async(id) => {
-            const response = await fetch(`http://localhost:3000/examiners/${id}}`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/examiners/${id}}`, {
                 method: "GET",
                 headers: { 
                     "Accept" : "application/json",
@@ -37,7 +37,7 @@ const Examiner = (context) => {
     const handleSubmit = async(e) => {
         e.preventDefault()
         if (e.nativeEvent.submitter.name === 'delete') {
-            const response = await fetch(`http://localhost:3000/examiners/${parameter.examiner_id}`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/examiners/${parameter.examiner_id}`, {
                 method: "DELETE",
                 headers: {
                     "Accept" : "application/json",
@@ -45,7 +45,7 @@ const Examiner = (context) => {
                 }
             })
         } else if (e.nativeEvent.submitter.name === 'update') {
-            const response = await fetch(`http://localhost:3000/examiners/${parameter.examiner_id}`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/examiners/${parameter.examiner_id}`, {
                 method: "PATCH",
                 headers: {
                     "Accept" : "application/json",

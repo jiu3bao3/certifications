@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const getCategories = async() => {
-  const response = await fetch(`http://localhost:3000/categories`, {
+  const response = await fetch(`${process.env.API_BASE_URL}/categories`, {
     method: "GET",
     headers : {
       "Accept": "application/json",

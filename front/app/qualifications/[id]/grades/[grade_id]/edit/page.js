@@ -19,7 +19,7 @@ const Grade = (context) => {
 
     useEffect(() => {
         const getGrade = async(qualificationId, gradeId) => {
-            const response = await fetch(`http://localhost:3000/qualifications/${qualificationId}/grades/${gradeId}`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/qualifications/${qualificationId}/grades/${gradeId}`, {
                 method: "GET",
                 headers : {
                     "Accept": "application/json",
@@ -27,14 +27,14 @@ const Grade = (context) => {
                 }
             })
             const json = await response.json()
-            setGradeName(json.grade_name)
-            setDescription(json.description)
-            setDisplayOrder(json.display_order)
-            setExaminerId(json.examiner_id)
-            setCertificaterId(json.certificater_id)
+            setGradeName(json.grade_name || '')
+            setDescription(json.description || '')
+            setDisplayOrder(json.display_order || '')
+            setExaminerId(json.examiner_id || '')
+            setCertificaterId(json.certificater_id || '')
         }
         const getExaminer = async() => {
-            const response = await fetch(`http://localhost:3000/examiners`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/examiners`, {
                 method: "GET",
                 headers: { 
                     "Accept" : "application/json",
@@ -45,7 +45,7 @@ const Grade = (context) => {
             setExaminerList(json)
         }
         const getCertificater = async() => {
-            const response = await fetch(`http://localhost:3000/certificaters`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/certificaters`, {
                 method: "GET",
                 headers: { 
                     "Accept" : "application/json",
@@ -62,7 +62,7 @@ const Grade = (context) => {
     const handleSubmit = async(e) => {
         e.preventDefault()
         if (e.nativeEvent.submitter.name === 'delete') {
-            const response = await fetch(`http://localhost:3000/qualifications/${qualificationId}/grades/${gradeId}`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/qualifications/${qualificationId}/grades/${gradeId}`, {
                 method: "DELETE",
                 headers : {
                     "Accept": "application/json",
@@ -70,7 +70,7 @@ const Grade = (context) => {
                 }
             })
         } else if (e.nativeEvent.submitter.name === 'update') {
-            const response = await fetch(`http://localhost:3000/qualifications/${qualificationId}/grades/${gradeId}`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/qualifications/${qualificationId}/grades/${gradeId}`, {
                 method: "PATCH",
                 headers : {
                     "Accept": "application/json",

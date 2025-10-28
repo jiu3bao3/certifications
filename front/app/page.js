@@ -21,7 +21,7 @@ const Home = (context) => {
 
   useEffect(() => {
     const getCategories = async() => {
-      const response = await fetch(`http://localhost:3000/categories`, {
+      const response = await fetch(`${process.env.PUBLIC_API_URL}/categories`, {
         method: "GET",
         headers : {
           "Accept": "application/json",
@@ -39,7 +39,7 @@ const Home = (context) => {
         }
       })
       const query = builder.join('&')
-      const response = await fetch(`http://localhost:3000?${query}`, {
+      const response = await fetch(`${process.env.PUBLIC_API_URL}?${query}`, {
         method: "GET",
         headers : {
           "Accept": "application/json",

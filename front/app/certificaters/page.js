@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const getCertificaters = async() => {
-    const response = await fetch(`http://localhost:3000/certificaters`, {
+    const response = await fetch(`${process.env.API_BASE_URL}/certificaters`, {
     method: "GET",
     headers : {
       "Accept": "application/json",

@@ -14,7 +14,7 @@ const Certificater = (context) => {
     const handleSubmit = async(e) => {
         e.preventDefault()
         try {
-            const response = await fetch(`http://localhost:3000/certificaters`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/certificaters`, {
                 method: "POST",
                 headers: {
                     "Accept" : "application/json",

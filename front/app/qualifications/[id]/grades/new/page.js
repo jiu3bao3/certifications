@@ -17,7 +17,7 @@ const Grade = (context) => {
     const router = useRouter()
     useEffect(() => {
         const getExaminer = async() => {
-            const response = await fetch(`http://localhost:3000/examiners`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/examiners`, {
                 method: "GET",
                 headers: { 
                     "Accept" : "application/json",
@@ -28,7 +28,7 @@ const Grade = (context) => {
             setExaminerList(json)
         }
         const getCertificater = async() => {
-            const response = await fetch(`http://localhost:3000/certificaters`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/certificaters`, {
                 method: "GET",
                 headers: { 
                     "Accept" : "application/json",
@@ -45,7 +45,7 @@ const Grade = (context) => {
     const handleSubmit = async(e) => {
         e.preventDefault()
         try {
-            const response = await fetch(`http://localhost:3000/qualifications/${qualificationId}/grades`, {
+            const response = await fetch(`${process.env.PUBLIC_API_URL}/qualifications/${qualificationId}/grades`, {
                 method: "POST",
                 headers: {
                     "Accept" : "application/json",
