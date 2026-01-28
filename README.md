@@ -198,11 +198,11 @@ Finished in 31.92 seconds (files took 9.37 seconds to load)
 </details>
 
 ## 環境
-* Ruby: 3.4
+* Ruby: 4.0
 * Rails: 8.0
 * MySQL: 8.0
 
 ## 更新履歴
 * 2023.12.30 新規作成
-* 2024.11.23 ライブラリ更新
 * 2025.10.20 Next.js/Reactによるフロントアプリ作成
+* 2026.01.17 Ruby Update (3.4 --> 4.0)
