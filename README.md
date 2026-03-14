@@ -199,7 +199,7 @@ Finished in 31.92 seconds (files took 9.37 seconds to load)
 
 ## 環境
 * Ruby: 4.0
-* Rails: 8.0
+* Rails: 8.1
 * MySQL: 8.0
 
 ## 更新履歴
