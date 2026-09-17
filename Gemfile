@@ -48,6 +48,8 @@ gem 'rack-cors'
 gem 'rails-i18n'
 gem 'active_model_serializers', '~> 0.10.14'
 
+gem "json", "< 3"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'pry-rails', '~> 0.3.9'
